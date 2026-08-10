@@ -11,6 +11,7 @@ SKIP_COMPLETED="${SKIP_COMPLETED:-1}"
 RESUME="${RESUME:-0}"
 RUN_MODE="${RUN_MODE:-full}"
 MAX_TOKENS="${MAX_TOKENS:-}"
+CONTEXT_LENGTH="${CONTEXT_LENGTH:-}"
 MODEL_FILTER=""
 BENCHMARK_FILTER=""
 while [[ $# -gt 0 ]]; do
@@ -91,6 +92,7 @@ for model in "${models[@]}"; do
     run_id="matrix_${tag}_${benchmark}"
     command="RUN_MODE=$RUN_MODE SKIP_COMPLETED=$SKIP_COMPLETED RESUME=$RESUME RUN_ID=$run_id"
     [[ -n "$MAX_TOKENS" ]] && command+=" MAX_TOKENS=$MAX_TOKENS"
+    [[ -n "$CONTEXT_LENGTH" ]] && command+=" CONTEXT_LENGTH=$CONTEXT_LENGTH"
     command+=" bash scripts/run_benchmark.sh $model $benchmark"
     echo "$command"
     if [[ "$DRY_RUN" == "1" ]]; then
