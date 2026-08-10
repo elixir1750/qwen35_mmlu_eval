@@ -50,6 +50,10 @@ case "$CACHE_MODE" in
   enabled|disabled) ;;
   *) echo "CACHE_MODE must be enabled or disabled" >&2; exit 2 ;;
 esac
+if [[ -n "$MAX_TOKENS_OVERRIDE" && "$MAX_TOKENS_OVERRIDE" -gt "$CONTEXT_LENGTH" ]]; then
+  echo "MAX_TOKENS=$MAX_TOKENS_OVERRIDE exceeds CONTEXT_LENGTH=$CONTEXT_LENGTH; choose a compatible value" >&2
+  exit 2
+fi
 
 resolve_json="$("$PYTHON" scripts/benchmark_config.py resolve "$MODEL_NAME" --benchmark "$BENCHMARK")"
 model_tag="$(printf '%s' "$resolve_json" | "$PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["model"]["model_tag"])')"
