@@ -9,7 +9,6 @@ import math
 import re
 import statistics
 from collections import Counter, defaultdict
-from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -98,18 +97,20 @@ def subset_from_path(path: Path, benchmark: str) -> str:
     return path.stem[len(prefix):] if path.stem.startswith(prefix) else path.stem
 
 
-def parse_elapsed(log_path: Path) -> float | None:
-    if not log_path.exists():
-        return None
-    pattern = re.compile(r"(20\d\d-\d\d-\d\d \d\d:\d\d:\d\d)")
-    timestamps: list[datetime] = []
-    for line in log_path.read_text(encoding="utf-8", errors="replace").splitlines():
-        match = pattern.search(line)
-        if match:
-            timestamps.append(datetime.strptime(match.group(1), "%Y-%m-%d %H:%M:%S"))
-    if len(timestamps) < 2:
-        return None
-    return (max(timestamps) - min(timestamps)).total_seconds()
+def manifest_elapsed(manifest_path: Path | None) -> tuple[float | None, str]:
+    """Read elapsed time from a structured monotonic-clock manifest.
+
+    Older runs only have log timestamps.  Deliberately do not infer duration
+    from those timestamps: wall-clock logging can be sparse, reordered, or
+    rounded to seconds.  Such runs are reported with a missing duration.
+    """
+    if manifest_path is None or not manifest_path.exists():
+        return None, "missing_manifest"
+    data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    value = data.get("monotonic_duration_seconds")
+    if isinstance(value, (int, float)) and value >= 0:
+        return float(value), "monotonic_manifest"
+    return None, "missing_monotonic_duration"
 
 
 def main() -> None:
@@ -117,24 +118,35 @@ def main() -> None:
     parser.add_argument("benchmark", choices=("mmlu_pro", "mmlu_redux"))
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--eval-log", type=Path)
+    parser.add_argument("--run-manifest", type=Path)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
     prediction_rows: dict[tuple[str, Any], dict[str, Any]] = {}
+    duplicate_prediction_rows = 0
     for path in find_files(args.output_dir, "predictions"):
         subset = subset_from_path(path, args.benchmark)
         for row in load_jsonl(path):
+            key = (subset, row.get("index"))
+            if key in prediction_rows:
+                duplicate_prediction_rows += 1
             # EvalScope may leave a partial duplicate after interruption. Reviews are
             # the canonical completed-sample set; keep the latest prediction by index.
-            prediction_rows[(subset, row.get("index"))] = row
+            prediction_rows[key] = row
 
-    reviews: list[dict[str, Any]] = []
+    review_rows: dict[tuple[str, Any], dict[str, Any]] = {}
+    duplicate_review_rows = 0
     for path in find_files(args.output_dir, "reviews"):
         subset = subset_from_path(path, args.benchmark)
         for row in load_jsonl(path):
             row["_subset"] = subset
-            reviews.append(row)
-    reviews.sort(key=lambda row: (str(((row.get("sample_score") or {}).get("sample_metadata") or {}).get("subject", "")), row.get("index", -1)))
+            key = (subset, row.get("index"))
+            if key in review_rows:
+                duplicate_review_rows += 1
+            # Keep the last row in deterministic path/line traversal order. This
+            # makes interrupted/resumed EvalScope outputs auditable.
+            review_rows[key] = row
+    reviews = [review_rows[key] for key in sorted(review_rows, key=lambda item: (item[0], str(item[1])))]
     if not reviews:
         raise RuntimeError(f"no review JSONL files found below {args.output_dir}")
 
@@ -151,11 +163,16 @@ def main() -> None:
             accuracy_value = value.get("acc")
         else:
             accuracy_value = value
-        prediction = prediction_details(prediction_rows.get((review.get("_subset", ""), review.get("index")), {}))
+        prediction_key = (review.get("_subset", ""), review.get("index"))
+        prediction_row = prediction_rows.get(prediction_key)
+        missing_prediction = prediction_row is None
+        prediction = prediction_details(prediction_row or {})
         invalid = not isinstance(extracted, str) or extracted.upper() not in allowed
         truncated = str(prediction.get("stop_reason", "")).lower() in {"length", "max_tokens", "max_output_tokens"}
-        api_error = prediction.get("error") not in (None, "", {})
-        correct = bool(accuracy_value == 1 or (not invalid and extracted.upper() == str(target).upper()))
+        api_error = missing_prediction or prediction.get("error") not in (None, "", {})
+        # A review score cannot turn an API failure or missing prediction into a
+        # correct generation. This keeps arithmetic and reliability counts aligned.
+        correct = bool(not api_error and (accuracy_value == 1 or (not invalid and extracted.upper() == str(target).upper())))
         records.append({
             "index": review.get("index"),
             "subject": sample_metadata.get("subject") or review.get("_subset"),
@@ -165,6 +182,7 @@ def main() -> None:
             "invalid_answer": invalid,
             "truncated": truncated,
             "api_error": api_error,
+            "missing_prediction": missing_prediction,
             **{key: prediction[key] for key in (
                 "stop_reason", "reasoning_chars", "final_chars", "reasoning", "final",
                 "input_tokens", "output_tokens", "total_tokens",
@@ -188,7 +206,7 @@ def main() -> None:
             "api_errors": sum(row["api_error"] for row in rows),
         }
 
-    elapsed = parse_elapsed(args.eval_log) if args.eval_log else None
+    elapsed, elapsed_source = manifest_elapsed(args.run_manifest)
     output_tokens = numeric("output_tokens")
     summary = {
         "benchmark": args.benchmark,
@@ -200,9 +218,13 @@ def main() -> None:
         "invalid_answers": sum(row["invalid_answer"] for row in records),
         "truncated_generations": sum(row["truncated"] for row in records),
         "api_failures": sum(row["api_error"] for row in records),
-        "missing_prediction_rows": sum((row.get("subject"), row["index"]) not in prediction_rows for row in records),
-        "elapsed_seconds_from_log": elapsed,
-        "throughput_samples_per_second": round(len(records) / elapsed, 6) if elapsed else None,
+        "missing_prediction_rows": sum(row["missing_prediction"] for row in records),
+        "duplicate_prediction_rows": duplicate_prediction_rows,
+        "duplicate_review_rows": duplicate_review_rows,
+        "elapsed_seconds": elapsed,
+        "elapsed_source": elapsed_source,
+        "elapsed_seconds_from_log": None,
+        "throughput_samples_per_second": round(len(records) / elapsed, 6) if elapsed and elapsed > 0 else None,
         "input_tokens": quantiles(numeric("input_tokens")),
         "output_tokens": quantiles(output_tokens),
         "total_tokens": quantiles(numeric("total_tokens")),
@@ -231,6 +253,7 @@ def main() -> None:
         "invalid_samples": [row for row in records if row["invalid_answer"]][:10],
         "truncated_samples": [row for row in records if row["truncated"]][:10],
         "api_error_samples": [row for row in records if row["api_error"]][:10],
+        "missing_prediction_samples": [row for row in records if row["missing_prediction"]][:10],
     }
     diagnostics_path = args.out.with_name(args.out.stem + "_diagnostics.json")
     diagnostics_path.write_text(json.dumps(diagnostics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

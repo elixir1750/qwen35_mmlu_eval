@@ -1,0 +1,670 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-10T12:52:02+08:00",
+  "raw_dirs": [
+    "/home/lhzhang/qwen35_mmlu_eval/outputs/throughput/raw/20260810_123322_94445",
+    "/home/lhzhang/qwen35_mmlu_eval/outputs/throughput/raw/20260810_123626_94447",
+    "/home/lhzhang/qwen35_mmlu_eval/outputs/throughput/raw/20260810_123837_94448",
+    "/home/lhzhang/qwen35_mmlu_eval/outputs/throughput/raw/20260810_124649_94451"
+  ],
+  "run_count": 10,
+  "runs": [
+    {
+      "backend": "sglang",
+      "layer": "online",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 1,
+      "requested_requests": 8,
+      "warmup_requests": 2,
+      "completed_requests": 8,
+      "failed_requests": 0,
+      "duration_seconds": 7.158373,
+      "request_per_second": 1.117572,
+      "input_tokens_per_second": 286.098535,
+      "output_tokens_per_second": 71.524634,
+      "total_tokens_per_second": 357.623168,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": 48.671437,
+        "median": 48.750008,
+        "p95": 49.881785,
+        "max": 49.881785
+      },
+      "tpot_ms": {
+        "mean": 13.429587,
+        "median": 13.447286,
+        "p95": 13.518246,
+        "max": 13.518246
+      },
+      "e2e_latency_ms": {
+        "mean": 894.735438,
+        "median": 896.078487,
+        "p95": 900.107689,
+        "max": 900.107689
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19472,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19472,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "online",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 4,
+      "requested_requests": 20,
+      "warmup_requests": 2,
+      "completed_requests": 20,
+      "failed_requests": 0,
+      "duration_seconds": 5.28749,
+      "request_per_second": 3.782513,
+      "input_tokens_per_second": 968.323292,
+      "output_tokens_per_second": 242.080823,
+      "total_tokens_per_second": 1210.404115,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": 158.137539,
+        "median": 159.393226,
+        "p95": 326.728791,
+        "max": 327.290783
+      },
+      "tpot_ms": {
+        "mean": 14.267181,
+        "median": 13.736856,
+        "p95": 15.466848,
+        "max": 18.168752
+      },
+      "e2e_latency_ms": {
+        "mean": 1056.969919,
+        "median": 1024.204863,
+        "p95": 1196.483388,
+        "max": 1197.288057
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19472,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19472,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "single",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 1,
+      "requested_requests": 3,
+      "warmup_requests": 2,
+      "completed_requests": 3,
+      "failed_requests": 0,
+      "duration_seconds": 2.674109,
+      "request_per_second": 1.121869,
+      "input_tokens_per_second": 287.198498,
+      "output_tokens_per_second": 71.799625,
+      "total_tokens_per_second": 358.998123,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": 891.35806,
+        "median": 892.361048,
+        "p95": 893.568105,
+        "max": 893.568105
+      },
+      "tpot_ms": {
+        "mean": 9e-06,
+        "median": 7e-06,
+        "p95": 1.3e-05,
+        "max": 1.3e-05
+      },
+      "e2e_latency_ms": {
+        "mean": 891.358623,
+        "median": 892.361468,
+        "p95": 893.568565,
+        "max": 893.568565
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19472,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19472,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "transformers",
+      "layer": "single",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 1,
+      "requested_requests": 3,
+      "warmup_requests": 2,
+      "completed_requests": 3,
+      "failed_requests": 0,
+      "duration_seconds": 8.97463,
+      "request_per_second": 0.334276,
+      "input_tokens_per_second": 85.574559,
+      "output_tokens_per_second": 21.39364,
+      "total_tokens_per_second": 106.968198,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "tpot_ms": {
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "e2e_latency_ms": {
+        "mean": 2985.29763,
+        "median": 2985.831275,
+        "p95": 2986.30363,
+        "max": 2986.30363
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 9217,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 9217,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "online",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 1,
+      "requested_requests": 8,
+      "warmup_requests": 2,
+      "completed_requests": 8,
+      "failed_requests": 0,
+      "duration_seconds": 6.655798,
+      "request_per_second": 1.20196,
+      "input_tokens_per_second": 307.701667,
+      "output_tokens_per_second": 76.925417,
+      "total_tokens_per_second": 384.627084,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": 57.063138,
+        "median": 55.936798,
+        "p95": 69.620661,
+        "max": 69.620661
+      },
+      "tpot_ms": {
+        "mean": 12.299168,
+        "median": 12.306439,
+        "p95": 12.3134,
+        "max": 12.3134
+      },
+      "e2e_latency_ms": {
+        "mean": 831.910696,
+        "median": 830.126995,
+        "p95": 843.591466,
+        "max": 843.591466
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19556,
+      "cache_mode": "disabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19556,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "online",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 4,
+      "requested_requests": 20,
+      "warmup_requests": 2,
+      "completed_requests": 20,
+      "failed_requests": 0,
+      "duration_seconds": 4.906882,
+      "request_per_second": 4.075908,
+      "input_tokens_per_second": 1043.432431,
+      "output_tokens_per_second": 260.858108,
+      "total_tokens_per_second": 1304.290539,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": 193.287004,
+        "median": 144.100423,
+        "p95": 289.207403,
+        "max": 289.294952
+      },
+      "tpot_ms": {
+        "mean": 12.501186,
+        "median": 12.456713,
+        "p95": 12.919175,
+        "max": 12.919508
+      },
+      "e2e_latency_ms": {
+        "mean": 980.861752,
+        "median": 928.852551,
+        "p95": 1074.069216,
+        "max": 1074.421591
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19556,
+      "cache_mode": "disabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19556,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "single",
+      "input_length_requested": 256,
+      "output_length_requested": 64,
+      "concurrency": 1,
+      "requested_requests": 3,
+      "warmup_requests": 2,
+      "completed_requests": 3,
+      "failed_requests": 0,
+      "duration_seconds": 2.485017,
+      "request_per_second": 1.207235,
+      "input_tokens_per_second": 309.0522,
+      "output_tokens_per_second": 77.26305,
+      "total_tokens_per_second": 386.31525,
+      "actual_input_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "actual_output_tokens": {
+        "mean": 64.0,
+        "median": 64.0,
+        "p95": 64.0,
+        "max": 64.0
+      },
+      "ttft_ms": {
+        "mean": 828.325796,
+        "median": 827.887782,
+        "p95": 829.29406,
+        "max": 829.29406
+      },
+      "tpot_ms": {
+        "mean": 1e-05,
+        "median": 1e-05,
+        "p95": 1.1e-05,
+        "max": 1.1e-05
+      },
+      "e2e_latency_ms": {
+        "mean": 828.326436,
+        "median": 827.888452,
+        "p95": 829.29472,
+        "max": 829.29472
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19520,
+      "cache_mode": "disabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19520,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "online",
+      "input_length_requested": 1024,
+      "output_length_requested": 256,
+      "concurrency": 1,
+      "requested_requests": 20,
+      "warmup_requests": 2,
+      "completed_requests": 20,
+      "failed_requests": 0,
+      "duration_seconds": 70.472609,
+      "request_per_second": 0.283798,
+      "input_tokens_per_second": 290.609363,
+      "output_tokens_per_second": 72.652341,
+      "total_tokens_per_second": 363.261704,
+      "actual_input_tokens": {
+        "mean": 1024.0,
+        "median": 1024.0,
+        "p95": 1024.0,
+        "max": 1024.0
+      },
+      "actual_output_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "ttft_ms": {
+        "mean": 135.117576,
+        "median": 134.655375,
+        "p95": 137.039097,
+        "max": 137.146427
+      },
+      "tpot_ms": {
+        "mean": 13.288062,
+        "median": 13.299555,
+        "p95": 13.316777,
+        "max": 13.323401
+      },
+      "e2e_latency_ms": {
+        "mean": 3523.573389,
+        "median": 3526.040835,
+        "p95": 3531.420431,
+        "max": 3533.03067
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19470,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19470,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "sglang",
+      "layer": "single",
+      "input_length_requested": 1024,
+      "output_length_requested": 256,
+      "concurrency": 1,
+      "requested_requests": 3,
+      "warmup_requests": 2,
+      "completed_requests": 3,
+      "failed_requests": 0,
+      "duration_seconds": 10.530184,
+      "request_per_second": 0.284895,
+      "input_tokens_per_second": 291.732799,
+      "output_tokens_per_second": 72.9332,
+      "total_tokens_per_second": 364.665999,
+      "actual_input_tokens": {
+        "mean": 1024.0,
+        "median": 1024.0,
+        "p95": 1024.0,
+        "max": 1024.0
+      },
+      "actual_output_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "ttft_ms": {
+        "mean": 3510.050361,
+        "median": 3512.598815,
+        "p95": 3513.679935,
+        "max": 3513.679935
+      },
+      "tpot_ms": {
+        "mean": 2e-06,
+        "median": 2e-06,
+        "p95": 2e-06,
+        "max": 2e-06
+      },
+      "e2e_latency_ms": {
+        "mean": 3510.050835,
+        "median": 3512.599375,
+        "p95": 3513.680315,
+        "max": 3513.680315
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 19470,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 19470,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "backend": "transformers",
+      "layer": "single",
+      "input_length_requested": 1024,
+      "output_length_requested": 256,
+      "concurrency": 1,
+      "requested_requests": 3,
+      "warmup_requests": 2,
+      "completed_requests": 3,
+      "failed_requests": 0,
+      "duration_seconds": 34.060052,
+      "request_per_second": 0.08808,
+      "input_tokens_per_second": 90.193637,
+      "output_tokens_per_second": 22.548409,
+      "total_tokens_per_second": 112.742046,
+      "actual_input_tokens": {
+        "mean": 1024.0,
+        "median": 1024.0,
+        "p95": 1024.0,
+        "max": 1024.0
+      },
+      "actual_output_tokens": {
+        "mean": 256.0,
+        "median": 256.0,
+        "p95": 256.0,
+        "max": 256.0
+      },
+      "ttft_ms": {
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "tpot_ms": {
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "e2e_latency_ms": {
+        "mean": 11344.769509,
+        "median": 11363.327688,
+        "p95": 11366.023076,
+        "max": 11366.023076
+      },
+      "same_input_output_length": true,
+      "errors": [],
+      "peak_gpu_memory_mib": 9447,
+      "cache_mode": "enabled",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver": "570.153.02",
+        "memory_used_mib": 9447,
+        "memory_total_mib": 24576
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "context_length": 65536,
+      "backend_versions": {
+        "sglang": "0.5.10",
+        "transformers": "5.3.0",
+        "torch": "2.9.1"
+      }
+    }
+  ],
+  "speedups": [
+    {
+      "cache_mode": "enabled",
+      "input_length": 256,
+      "output_length": 64,
+      "sglang_output_tokens_per_second": 71.799625,
+      "transformers_output_tokens_per_second": 21.39364,
+      "speedup_output_tps": 3.35612,
+      "speedup_request_tps": 3.356116,
+      "same_input_output_length": true
+    },
+    {
+      "cache_mode": "enabled",
+      "input_length": 1024,
+      "output_length": 256,
+      "sglang_output_tokens_per_second": 72.9332,
+      "transformers_output_tokens_per_second": 22.548409,
+      "speedup_output_tps": 3.234516,
+      "speedup_request_tps": 3.234503,
+      "same_input_output_length": true
+    }
+  ],
+  "comparison_policy": "speedups are emitted only for matching input/output lengths and single-stream runs; no Transformers concurrent-service speedup is claimed",
+  "transformers_online_service": {
+    "available": false,
+    "reason": "transformers serve --help fails before startup because the installed transformers 5.3.0 and huggingface_hub 1.26.1 CLI annotations are incompatible"
+  }
+}

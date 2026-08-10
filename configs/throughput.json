@@ -1,0 +1,38 @@
+{
+  "model_repo": "Qwen/Qwen3.5-4B",
+  "model_path": "model/Qwen3.5-4B",
+  "dtype": "bfloat16",
+  "context_length": 65536,
+  "seed": 42,
+  "mtp": false,
+  "speculative_decoding": false,
+  "cache_modes": ["disabled", "enabled"],
+  "single_stream": {
+    "warmup": 2,
+    "repeats": 3,
+    "cases": [
+      {"input_length": 1024, "output_length": 256},
+      {"input_length": 1024, "output_length": 1024},
+      {"input_length": 6144, "output_length": 1024}
+    ]
+  },
+  "online_sglang": {
+    "concurrency": [1, 4, 8, 16],
+    "requests": "max(20, 5 * concurrency)",
+    "warmup": "max(2, ceil(0.1 * requests))",
+    "input_length": 1024,
+    "output_lengths": [256, 1024],
+    "stream": true,
+    "ignore_eos": true
+  },
+  "quick": {
+    "input_length": 256,
+    "output_length": 64,
+    "concurrency": [1, 4],
+    "requests": "max(8, 5 * concurrency)"
+  },
+  "transformers_online": {
+    "available": false,
+    "reason": "transformers serve CLI fails during startup with installed transformers/huggingface_hub versions"
+  }
+}

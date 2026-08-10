@@ -1,0 +1,1593 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-10T12:44:36+08:00",
+  "cache_root": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets",
+  "source": "local ModelScope cache materialized by EvalScope 1.10.0",
+  "upstream_revision_status": "the cache metadata points to @master, not an immutable upstream commit; content hashes below are the reproducibility anchor for this run",
+  "benchmarks": {
+    "mmlu_pro": {
+      "cache_entry_count": 1,
+      "total_examples": 12032,
+      "upstream_revisions": [
+        "master"
+      ],
+      "entries": [
+        {
+          "benchmark": "mmlu_pro",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/TIGER-Lab_MMLU-Pro-964bfd6c3bcf69c1a5846c0610388986",
+          "dataset_name": "mmlu-pro",
+          "split": [
+            "test"
+          ],
+          "num_examples": 12032,
+          "upstream_uri": "hf://datasets/TIGER-Lab/MMLU-Pro@master/data/test-00000-of-00001.parquet",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 8724720,
+              "sha256": "4c741944e3b53719b433be6e7916e4ab9e8ff33f70e9c365614b4e317c0476bb"
+            },
+            "dataset_info.json": {
+              "bytes": 1321,
+              "sha256": "cc8076631a3148692321da89b36f5afb6c916ab91346512cde02b914c3e0b157"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "d9e5e398feead6266dffdc92b930b643013964b103ba1e79858fa0073bd13667"
+            }
+          },
+          "dataset_info_sha256": "cc8076631a3148692321da89b36f5afb6c916ab91346512cde02b914c3e0b157",
+          "state_sha256": "d9e5e398feead6266dffdc92b930b643013964b103ba1e79858fa0073bd13667"
+        }
+      ]
+    },
+    "mmlu_redux": {
+      "cache_entry_count": 57,
+      "total_examples": 5700,
+      "upstream_revisions": [
+        "master"
+      ],
+      "entries": [
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-02a34b440ad6675ea6d63be645db5585",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/anatomy/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 35320,
+              "sha256": "a835a8483a5e6adb80d81314d79326a642db8eea45b4bbf48a266504f7886746"
+            },
+            "dataset_info.json": {
+              "bytes": 1266,
+              "sha256": "80342b99b2618eeea7639de6c2c873478674eead48369a613f001c06edaad104"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "69089494af5f21bbf3109f81a8ba8711eeef8f29adc92e1ed8b282ef9d354d7f"
+            }
+          },
+          "dataset_info_sha256": "80342b99b2618eeea7639de6c2c873478674eead48369a613f001c06edaad104",
+          "state_sha256": "69089494af5f21bbf3109f81a8ba8711eeef8f29adc92e1ed8b282ef9d354d7f"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-068f5aeaed145a6819a4d68dd9750625",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/virology/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 33280,
+              "sha256": "ddbf1a93abb9faaa8165e89bb0c4ba09b5885cbea3a184069aa279dc1f35f1b4"
+            },
+            "dataset_info.json": {
+              "bytes": 1268,
+              "sha256": "b4a4aa9f2f05b7bc512d1f03c981c588cdb7622ef3bfda5a8fdcf5bf7da11043"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "5106641c0aacce4eec3a4d0e9ec7459dd2eba9384979424eb1ed57cf6806861b"
+            }
+          },
+          "dataset_info_sha256": "b4a4aa9f2f05b7bc512d1f03c981c588cdb7622ef3bfda5a8fdcf5bf7da11043",
+          "state_sha256": "5106641c0aacce4eec3a4d0e9ec7459dd2eba9384979424eb1ed57cf6806861b"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-07673a56ff20e622a86e53085719d26b",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/global_facts/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 32560,
+              "sha256": "74579628d3b5ff394db1cc7adfc92c8953724629380e90f4ff80606a7ae1ce47"
+            },
+            "dataset_info.json": {
+              "bytes": 1276,
+              "sha256": "e8984ca05f1d635a22c681130550b5a1eaa6a255458eaa81e471c139498c555c"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "c6cb39d1e8c819c5d9a818b6c9638b54528767b658f8869259d10bf5bf35ed0c"
+            }
+          },
+          "dataset_info_sha256": "e8984ca05f1d635a22c681130550b5a1eaa6a255458eaa81e471c139498c555c",
+          "state_sha256": "c6cb39d1e8c819c5d9a818b6c9638b54528767b658f8869259d10bf5bf35ed0c"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-089c78ff12b1076c5b2458d5e21085ec",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/business_ethics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 51808,
+              "sha256": "9bbdfd8c60dc2b080cfaf2c23c3217f2557a1a2a7d92635d19c056ef7cad69a0"
+            },
+            "dataset_info.json": {
+              "bytes": 1283,
+              "sha256": "5569cb222afb86dacfaa9a9b65d5ee72c3c199074a905c9015dc7fe559d68544"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "cb748f3c3c65db361a37b0880b435d2edb51775066fa5d0039fa52e1df8d15e8"
+            }
+          },
+          "dataset_info_sha256": "5569cb222afb86dacfaa9a9b65d5ee72c3c199074a905c9015dc7fe559d68544",
+          "state_sha256": "cb748f3c3c65db361a37b0880b435d2edb51775066fa5d0039fa52e1df8d15e8"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-09471901579bc510df05593969abcef5",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_physics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 50680,
+              "sha256": "bded9b42bd6a2f552eeeb2da0fe9a1e05f4b71bb3757946a0dc29685cb4cac3a"
+            },
+            "dataset_info.json": {
+              "bytes": 1290,
+              "sha256": "a6a3b705b3f93914b36364b7a222575d612045cc69e75470094112a4dff0d8e8"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "37dc4c0386beb3d971a485a045799644b386727c2ccf86611ab8e33d2ebe84c3"
+            }
+          },
+          "dataset_info_sha256": "a6a3b705b3f93914b36364b7a222575d612045cc69e75470094112a4dff0d8e8",
+          "state_sha256": "37dc4c0386beb3d971a485a045799644b386727c2ccf86611ab8e33d2ebe84c3"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-181aef672ae14a8987d8e5d422796a78",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/professional_medicine/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 90224,
+              "sha256": "d7641fc000b5c01be255a14ab1e49d68c7825c8fd2494d30082101a197ee6273"
+            },
+            "dataset_info.json": {
+              "bytes": 1295,
+              "sha256": "91523e9ca354e6331271c1279721a273965e12e16fcd9a65d4b6e566891fbeb2"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "b4bdb0b64a791f52b8aa3feb6dddff836c1b1dc3788e01dad5e0895c7ca78713"
+            }
+          },
+          "dataset_info_sha256": "91523e9ca354e6331271c1279721a273965e12e16fcd9a65d4b6e566891fbeb2",
+          "state_sha256": "b4bdb0b64a791f52b8aa3feb6dddff836c1b1dc3788e01dad5e0895c7ca78713"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-21797d64d9df5c64c8821ca505b62704",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/college_chemistry/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 32288,
+              "sha256": "635f2afb1efe63037196d51838c9f705429fc346aeb77acb3ec0055b7fc70c81"
+            },
+            "dataset_info.json": {
+              "bytes": 1286,
+              "sha256": "1476514e9abce7c2387c11da1c8eaf5c4b0ab3c939a00ad508c0306226e35a47"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "f2402b609ca6a27a078181d5c88a0770d75d077739719e985299f5d974a5d210"
+            }
+          },
+          "dataset_info_sha256": "1476514e9abce7c2387c11da1c8eaf5c4b0ab3c939a00ad508c0306226e35a47",
+          "state_sha256": "f2402b609ca6a27a078181d5c88a0770d75d077739719e985299f5d974a5d210"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-2259f40b45f089925ab50aef0c7ea47a",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/computer_security/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 41088,
+              "sha256": "cd05ab14131c8980be3de75d8a0fe4cdc7760344c3099feea83e622c5a13e743"
+            },
+            "dataset_info.json": {
+              "bytes": 1286,
+              "sha256": "cee816b7a4de6ea7fa1d8851c5c11715725dc33b26419982663fa4c44ad79e4c"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "d99432b76fe636f4d413a9a7b3efa12f58b9011c4e5f65f296b5981d90355210"
+            }
+          },
+          "dataset_info_sha256": "cee816b7a4de6ea7fa1d8851c5c11715725dc33b26419982663fa4c44ad79e4c",
+          "state_sha256": "d99432b76fe636f4d413a9a7b3efa12f58b9011c4e5f65f296b5981d90355210"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-25d3c81e5724ddfcdc14adf06ebac2b5",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/clinical_knowledge/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 38264,
+              "sha256": "a98440f5f246b62e9a86175c6a57f0afa87f671381bc5dc016092f8efcd8ec99"
+            },
+            "dataset_info.json": {
+              "bytes": 1288,
+              "sha256": "ffdab8cb1bef98398a0dbd91422e3c865e1e0fa48c66b05610bbafbf1685a4a8"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "fa59a9cf8f6e626ac73f11bf4d35428104c6ebfac57f0fabb14fb3839ea18fe2"
+            }
+          },
+          "dataset_info_sha256": "ffdab8cb1bef98398a0dbd91422e3c865e1e0fa48c66b05610bbafbf1685a4a8",
+          "state_sha256": "fa59a9cf8f6e626ac73f11bf4d35428104c6ebfac57f0fabb14fb3839ea18fe2"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-297875dc4c37f5fe7bf42a635665e1ec",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_us_history/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 154968,
+              "sha256": "1519053436c69a8cb07262133fe004559f463fbacab30587586745e0aae10526"
+            },
+            "dataset_info.json": {
+              "bytes": 1301,
+              "sha256": "4ba37a23cf09a9ca1062f2d4476173c825ace56350c5b8258c961294ca40dd2d"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "d41c7f0793939ed86f9cdb40043798172dbef267d871c55217dcd1ca2e3f4433"
+            }
+          },
+          "dataset_info_sha256": "4ba37a23cf09a9ca1062f2d4476173c825ace56350c5b8258c961294ca40dd2d",
+          "state_sha256": "d41c7f0793939ed86f9cdb40043798172dbef267d871c55217dcd1ca2e3f4433"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-2cfb2ee4e9593bde10c1ed81a26ae4ec",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_chemistry/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 37128,
+              "sha256": "e848971bc8948249944843cbc4f0aba5a5b38f6c1a5a0d7cd70521759c5c40d5"
+            },
+            "dataset_info.json": {
+              "bytes": 1294,
+              "sha256": "556b73fd953b47bbfe3b6a707c99e94e0577b080622600af78010ca9c1f87ead"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "6790e03648bc04faad29cf4e6aca5d0ad9197d307d021e0bc1fd8e129a9206b3"
+            }
+          },
+          "dataset_info_sha256": "556b73fd953b47bbfe3b6a707c99e94e0577b080622600af78010ca9c1f87ead",
+          "state_sha256": "6790e03648bc04faad29cf4e6aca5d0ad9197d307d021e0bc1fd8e129a9206b3"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-2e1472a177744a0fa0a288ef9ba329e0",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/world_religions/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 28256,
+              "sha256": "6cec59054833fc5e8abfa89a34fbec75d1ec5eb1c9196dce1ba109b5bb4cbd22"
+            },
+            "dataset_info.json": {
+              "bytes": 1282,
+              "sha256": "6f077533d9d16973af67d9a9257aa3bca9ce4ac0212f1cd7829194e47652d8f6"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "2c85555fe82eae7afa18c45fdc43bb76b87583777e0a2baf06701f33b7763794"
+            }
+          },
+          "dataset_info_sha256": "6f077533d9d16973af67d9a9257aa3bca9ce4ac0212f1cd7829194e47652d8f6",
+          "state_sha256": "2c85555fe82eae7afa18c45fdc43bb76b87583777e0a2baf06701f33b7763794"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-30c5d602c5611f86531883e6f36f0a67",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/machine_learning/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 40440,
+              "sha256": "c5a05205202352cb6459d008c1f9895c92159668c60e9356b9812dc728972caf"
+            },
+            "dataset_info.json": {
+              "bytes": 1284,
+              "sha256": "122450152d2fb29032b6d58fe7248a4ca59c721ac804e7cf48cf2354722820e4"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "e15fb1a953bfd05a1ba050b721ead726e686e183a6ea9b628c5b4e4d49f3a409"
+            }
+          },
+          "dataset_info_sha256": "122450152d2fb29032b6d58fe7248a4ca59c721ac804e7cf48cf2354722820e4",
+          "state_sha256": "e15fb1a953bfd05a1ba050b721ead726e686e183a6ea9b628c5b4e4d49f3a409"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-330a39e96172ce960fdc2b7dc61cabf9",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_biology/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 47376,
+              "sha256": "d537f29f452f31d57e97eb64538e7bdc1065b026d5f2d8d1f97a8fb1b5400d1d"
+            },
+            "dataset_info.json": {
+              "bytes": 1290,
+              "sha256": "ee6001dd503acf0270d9df2b3b7f739bc1092c53ec106b99c94e97e7b2ae9f1c"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "90827d55a90d0173f603656004b48353c3f9a283c619f02e1b3ef94cc1ccf7df"
+            }
+          },
+          "dataset_info_sha256": "ee6001dd503acf0270d9df2b3b7f739bc1092c53ec106b99c94e97e7b2ae9f1c",
+          "state_sha256": "90827d55a90d0173f603656004b48353c3f9a283c619f02e1b3ef94cc1ccf7df"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-396e67af3690290e4b5bc0b75cd4bff5",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_european_history/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 167632,
+              "sha256": "3e563cb3d9c2c79cf3160bc36d29fc338304a9ce60ef0af7c0b2e885c832c2ef"
+            },
+            "dataset_info.json": {
+              "bytes": 1313,
+              "sha256": "c03573e968b7d5c069b96cce118261c336b8d0f3e48d76e9d9c4b45402f8639f"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "0f41c6cdffa5b44cf61073a29976d7f46ba9634a2dbdec5a0671e542ddc0a825"
+            }
+          },
+          "dataset_info_sha256": "c03573e968b7d5c069b96cce118261c336b8d0f3e48d76e9d9c4b45402f8639f",
+          "state_sha256": "0f41c6cdffa5b44cf61073a29976d7f46ba9634a2dbdec5a0671e542ddc0a825"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-3a57992bec5f0fe0136f4b110329766e",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/management/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 30880,
+              "sha256": "337f1ca524f7f0b38fbc087398802b95ac44e026c8ec8e9f5c17b8e622391ae6"
+            },
+            "dataset_info.json": {
+              "bytes": 1272,
+              "sha256": "ef59fe7eb48c4a40df251736e79d39e41f9f12e3d4470815b8bef3c073e7066c"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "2ad4b0ddf9d7aab3234f9971404cd95230cc5b55ef0e739cc759532cc2ebe0fb"
+            }
+          },
+          "dataset_info_sha256": "ef59fe7eb48c4a40df251736e79d39e41f9f12e3d4470815b8bef3c073e7066c",
+          "state_sha256": "2ad4b0ddf9d7aab3234f9971404cd95230cc5b55ef0e739cc759532cc2ebe0fb"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-3b8b025ac645637627dbb7f55bb9364a",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_government_and_politics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 45944,
+              "sha256": "c3de0c8068942e69e3560db0f05030d17aeb676065c5d1bde95872072592a8da"
+            },
+            "dataset_info.json": {
+              "bytes": 1322,
+              "sha256": "6d5aaea30fff08505442f48e7edb7ad44604766bc907d78de8b49241cfb93595"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "46d2b7e63451b3fc4b7c84540691c69c1192819719ef058e5356b12503a8d96b"
+            }
+          },
+          "dataset_info_sha256": "6d5aaea30fff08505442f48e7edb7ad44604766bc907d78de8b49241cfb93595",
+          "state_sha256": "46d2b7e63451b3fc4b7c84540691c69c1192819719ef058e5356b12503a8d96b"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-424cace77c7083fce9fdb25d339a1945",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/nutrition/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 40184,
+              "sha256": "51bd81f7caa6edcc2b3cccdd133dc5917037a878108d68c8eaa6a642cfa0522d"
+            },
+            "dataset_info.json": {
+              "bytes": 1270,
+              "sha256": "e00aad4f6441a6983c5f13b10da303ea16cd5019c4e030b8a73163e25b191832"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "8432457c4a5f150629bf50d41706eeab519c6dfe1892493e585a72f53c6fe8e0"
+            }
+          },
+          "dataset_info_sha256": "e00aad4f6441a6983c5f13b10da303ea16cd5019c4e030b8a73163e25b191832",
+          "state_sha256": "8432457c4a5f150629bf50d41706eeab519c6dfe1892493e585a72f53c6fe8e0"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-433b1885e86a10ad94a9eb5697097673",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/public_relations/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 38168,
+              "sha256": "490f082582e280d8d80ccefbd08a32fa9d9159d656dec129a56fc9dcf71dfd03"
+            },
+            "dataset_info.json": {
+              "bytes": 1284,
+              "sha256": "977331aed731aa5e3eddda91f6eef2b0e242a69bceb110c42fb9a23d4a0f0bcf"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "fd00ecbcbb8168495a30db2acb39d68989aa41ebefc30c00843d827bc6956b94"
+            }
+          },
+          "dataset_info_sha256": "977331aed731aa5e3eddda91f6eef2b0e242a69bceb110c42fb9a23d4a0f0bcf",
+          "state_sha256": "fd00ecbcbb8168495a30db2acb39d68989aa41ebefc30c00843d827bc6956b94"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-46c3da6e43308f4dab3ac08c307e2b33",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/miscellaneous/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 22248,
+              "sha256": "6934160a3d18c48f4b4ad5332972cd9f8b47b02774b6f8acbef32bcdf542cbb4"
+            },
+            "dataset_info.json": {
+              "bytes": 1278,
+              "sha256": "2b8917ba08dd3c97221a972d6c0e4d5d76ab84b39836b94acd7b241de9e78197"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "bd61301f762757cfa43620804f106710d6fc768580dbe4b989866e925abf3f36"
+            }
+          },
+          "dataset_info_sha256": "2b8917ba08dd3c97221a972d6c0e4d5d76ab84b39836b94acd7b241de9e78197",
+          "state_sha256": "bd61301f762757cfa43620804f106710d6fc768580dbe4b989866e925abf3f36"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-49df4225afbdd57d2741edc23b60caf8",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/professional_law/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 121400,
+              "sha256": "f09f923409d95f80f6c6de862fe2aa6e6bc7ce45c41576db102a7e3c2d603806"
+            },
+            "dataset_info.json": {
+              "bytes": 1289,
+              "sha256": "80ba859a9f909edef4d5585594ebb9fdf4ebc071f3cfc34c2324386a8a667288"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "26c628347beb828610bf5845072b835d210b930b5acec82c696f4b3f6d635a20"
+            }
+          },
+          "dataset_info_sha256": "80ba859a9f909edef4d5585594ebb9fdf4ebc071f3cfc34c2324386a8a667288",
+          "state_sha256": "26c628347beb828610bf5845072b835d210b930b5acec82c696f4b3f6d635a20"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-4b1c6f9b61e9a2babf3a923a8111fb88",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/international_law/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 46656,
+              "sha256": "364771fb3ffcaca53037f6390e97e59c9ddf664048f82375058cf291b754b923"
+            },
+            "dataset_info.json": {
+              "bytes": 1286,
+              "sha256": "5db44f8bc4db709e08cb2ac68a18e5ccd4b1ea6317584ec1e987140aaa6d9d3c"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "0f59cdf8520e8333a80617504cccff368c90deb4b137292813451fe25277e5d3"
+            }
+          },
+          "dataset_info_sha256": "5db44f8bc4db709e08cb2ac68a18e5ccd4b1ea6317584ec1e987140aaa6d9d3c",
+          "state_sha256": "0f59cdf8520e8333a80617504cccff368c90deb4b137292813451fe25277e5d3"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-4db0902f710c3c331bc3a2d6a4cf02db",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/prehistory/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 37560,
+              "sha256": "a7946932d0648e8bc7f89b566955a925fbd70f7bc190139ecec4b314c9f069f4"
+            },
+            "dataset_info.json": {
+              "bytes": 1272,
+              "sha256": "ff291d85c29695be13d2a7b41b6a8f898b759a859f2c829022d74a5646086a55"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "ab31838de093d57296bc63e8b387dd13e07b133ac9be37ab94ca632269f72088"
+            }
+          },
+          "dataset_info_sha256": "ff291d85c29695be13d2a7b41b6a8f898b759a859f2c829022d74a5646086a55",
+          "state_sha256": "ab31838de093d57296bc63e8b387dd13e07b133ac9be37ab94ca632269f72088"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-57828f1dfa4937da0d71acb0697b34e6",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/us_foreign_policy/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 39800,
+              "sha256": "8a4534bab1ab6bc5c27c2a8f379dbd131ea118ccf45d375eabf8681fc219a316"
+            },
+            "dataset_info.json": {
+              "bytes": 1286,
+              "sha256": "926791ae5076641a296119f84467a3ed56b71970f6fc467132fc51bce09dcf26"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "c111bc70bbb3d182e8f1c2adb86f1c45daea04702dbf1989438c45cf255a3664"
+            }
+          },
+          "dataset_info_sha256": "926791ae5076641a296119f84467a3ed56b71970f6fc467132fc51bce09dcf26",
+          "state_sha256": "c111bc70bbb3d182e8f1c2adb86f1c45daea04702dbf1989438c45cf255a3664"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-5f48b1900bbc20527a33e2423537728c",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/moral_disputes/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 36488,
+              "sha256": "b815b2590fb4301ceac2c2bee53b2362c004a77a468fa7d13d5a6d8a8816d3a1"
+            },
+            "dataset_info.json": {
+              "bytes": 1280,
+              "sha256": "f017ee7f58a97831f63affb470bfbec462933bb7a1a0d66e43f140e1add93c3c"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "0e706f75ebfb31be5c96e91f6adf51ae56051e0af119caeaa73297e881d06617"
+            }
+          },
+          "dataset_info_sha256": "f017ee7f58a97831f63affb470bfbec462933bb7a1a0d66e43f140e1add93c3c",
+          "state_sha256": "0e706f75ebfb31be5c96e91f6adf51ae56051e0af119caeaa73297e881d06617"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-638b5aa6a79e82ecd00b8b015786b7f5",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/elementary_mathematics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 23456,
+              "sha256": "3bf4224423c4a2e9051162999dfc766393cb0e3d32dbf7be81e195e605e45348"
+            },
+            "dataset_info.json": {
+              "bytes": 1296,
+              "sha256": "150a712480d42ebde5aa9d55382cfef4fe82f00f23fb06430a1d26d704b1e0ca"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "1de4d9837e5a3e4aec0c23e0c37cde0595a1acb1af57f9a13531de925c4cfeb2"
+            }
+          },
+          "dataset_info_sha256": "150a712480d42ebde5aa9d55382cfef4fe82f00f23fb06430a1d26d704b1e0ca",
+          "state_sha256": "1de4d9837e5a3e4aec0c23e0c37cde0595a1acb1af57f9a13531de925c4cfeb2"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-643925bf6164b0ce678b15ecca883da5",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/econometrics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 50840,
+              "sha256": "1be9694cdc9efd00600047f7a2b20eae653a618d0d6c818f08761b3ded19a1a3"
+            },
+            "dataset_info.json": {
+              "bytes": 1277,
+              "sha256": "9fa8f019e3936620d316e1cacd3b472e4d20aaaf9f5acfed87eec2cc8e135a12"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "29b2cb300d9f96ab202b92a8c0d89174865c6aa0185a10d79c5d92e50aea6d1a"
+            }
+          },
+          "dataset_info_sha256": "9fa8f019e3936620d316e1cacd3b472e4d20aaaf9f5acfed87eec2cc8e135a12",
+          "state_sha256": "29b2cb300d9f96ab202b92a8c0d89174865c6aa0185a10d79c5d92e50aea6d1a"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-6ea4872a2ae921ad944d81a3dded7301",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/college_physics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 36792,
+              "sha256": "888dda438d96828f187b231adb9c26cde94858f568bf8470af18128edccd68b1"
+            },
+            "dataset_info.json": {
+              "bytes": 1282,
+              "sha256": "420aec470172fb5d09e6443629f2629338de3008873e4580e1dcb3904b5dd416"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "2817a9c24e66493882e985f7a2a50b3c19baa613c2c7433d2c465e57ad1b3da8"
+            }
+          },
+          "dataset_info_sha256": "420aec470172fb5d09e6443629f2629338de3008873e4580e1dcb3904b5dd416",
+          "state_sha256": "2817a9c24e66493882e985f7a2a50b3c19baa613c2c7433d2c465e57ad1b3da8"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-6ff4e77b8939534a70384a4107acc6d1",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_world_history/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 162024,
+              "sha256": "624d32e8401c95cce931efb26f0f2319cf05fab15846f4fe1e65bfae2d452e0d"
+            },
+            "dataset_info.json": {
+              "bytes": 1307,
+              "sha256": "063f56c30a3b02b7f04a5e057d8d9cc9c0b19bc6fca45c68d2eb41803db596c9"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "fb05f533ef55a9538880afe91150437cbc3cf9bfef6b9b6a2af2ca1ea0ca71c3"
+            }
+          },
+          "dataset_info_sha256": "063f56c30a3b02b7f04a5e057d8d9cc9c0b19bc6fca45c68d2eb41803db596c9",
+          "state_sha256": "fb05f533ef55a9538880afe91150437cbc3cf9bfef6b9b6a2af2ca1ea0ca71c3"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-71d1af80d6a15b8534bf8868e8ee206e",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_microeconomics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 41104,
+              "sha256": "fbfc8923a7145783e46c17b4209da164a0aad3b8cfb14fd8389eaf8da5ed0f4e"
+            },
+            "dataset_info.json": {
+              "bytes": 1304,
+              "sha256": "eb92e302552c0d4c4bebcd36d81568b0abf76fb6faa5569638371dc9b5a5a097"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "eaae4eb5bedaa1428e2cf6b7010d6a0b75aa203db1f69dce3cd8afcee1c5b629"
+            }
+          },
+          "dataset_info_sha256": "eb92e302552c0d4c4bebcd36d81568b0abf76fb6faa5569638371dc9b5a5a097",
+          "state_sha256": "eaae4eb5bedaa1428e2cf6b7010d6a0b75aa203db1f69dce3cd8afcee1c5b629"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-77e0eb4ea8f8c1fb9c63370304a8137b",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/electrical_engineering/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 20328,
+              "sha256": "07adcf23d0c1708fce480fd33bda9009cffa873e8cc002c5c08155b6af64eec1"
+            },
+            "dataset_info.json": {
+              "bytes": 1296,
+              "sha256": "171b864b0612d91b37cc250770da8e29783523c40e5eb9f7074674900f6276ed"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "c759fb1ccf22eb03efb2a60a99b07c6cec41c6962313ca5ded154583db41e930"
+            }
+          },
+          "dataset_info_sha256": "171b864b0612d91b37cc250770da8e29783523c40e5eb9f7074674900f6276ed",
+          "state_sha256": "c759fb1ccf22eb03efb2a60a99b07c6cec41c6962313ca5ded154583db41e930"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-7c33772468748be2601409ab91a1551d",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/conceptual_physics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 32576,
+              "sha256": "746586ade5fb067af5b947a6be376dfde16ae72485e255835bac118d6d4301e5"
+            },
+            "dataset_info.json": {
+              "bytes": 1288,
+              "sha256": "06efc59410866dd2f008e2920e3dcc57e82f945fcc65494f8169870f20bbb67d"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "e6a0f3282d88b33a0873f6fa2cffdf08011c2f816639d42e48d564c1b8265a39"
+            }
+          },
+          "dataset_info_sha256": "06efc59410866dd2f008e2920e3dcc57e82f945fcc65494f8169870f20bbb67d",
+          "state_sha256": "e6a0f3282d88b33a0873f6fa2cffdf08011c2f816639d42e48d564c1b8265a39"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-7eacd806d9926eb932582b6094ed3981",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/security_studies/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 95696,
+              "sha256": "8c95f9f46314f04768bb885d2d116dc059f8f006ba1ee4ac88fa96040f0519b3"
+            },
+            "dataset_info.json": {
+              "bytes": 1285,
+              "sha256": "f842c754f27881e3a53cf384d5e05816b076dbbf1975cd34a199beb0630b5eb6"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "71fb49251ea2b051be4cc0f6e8365ea7fb099c01a0e6b04403e5cb25e5e3178c"
+            }
+          },
+          "dataset_info_sha256": "f842c754f27881e3a53cf384d5e05816b076dbbf1975cd34a199beb0630b5eb6",
+          "state_sha256": "71fb49251ea2b051be4cc0f6e8365ea7fb099c01a0e6b04403e5cb25e5e3178c"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-832fba9a9c69fba17d177e0db3451aa6",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/college_medicine/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 57104,
+              "sha256": "75899282b36100185ce3a685835053e5fbba2596ef4d2c2822694d97a61a30c5"
+            },
+            "dataset_info.json": {
+              "bytes": 1285,
+              "sha256": "0bba1b8cc2aa7532e753c5c71a86d4a75463815b9a6937ba38a9527af124ccb0"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "d4abc0f23e1bb958006ac19ddc5823d1fa176959132045ed123c49a3df18c26f"
+            }
+          },
+          "dataset_info_sha256": "0bba1b8cc2aa7532e753c5c71a86d4a75463815b9a6937ba38a9527af124ccb0",
+          "state_sha256": "d4abc0f23e1bb958006ac19ddc5823d1fa176959132045ed123c49a3df18c26f"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-85c71338e678f85d782b9eb26ad94af2",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/college_mathematics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 28896,
+              "sha256": "6e08e9615aae0327d5b1be74213667fb22542b05513c021374d44078274acd33"
+            },
+            "dataset_info.json": {
+              "bytes": 1290,
+              "sha256": "11aa6064539e97dea659afb802e8405666f54242160ab42a43954a879b05d89f"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "250631387bc366d061d74ae174fd498a5db1c4cbc641ef80fc7f0ef0fb2c5ea0"
+            }
+          },
+          "dataset_info_sha256": "11aa6064539e97dea659afb802e8405666f54242160ab42a43954a879b05d89f",
+          "state_sha256": "250631387bc366d061d74ae174fd498a5db1c4cbc641ef80fc7f0ef0fb2c5ea0"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-8b5464d2211108c310595ea9ff14425f",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_macroeconomics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 44768,
+              "sha256": "ffa196011a2e094c2425cc72584338ac90966cf6bffc21899a74ceb0d94b223c"
+            },
+            "dataset_info.json": {
+              "bytes": 1304,
+              "sha256": "bdf096b10ee5a4a745df3d9a3db006b862f366fa3aa6b8e6b5ddf14fda5d9501"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "3c698e805fd5fd3987ee1fa817ae1cc1280eb603dbc5c0830bcd51d78ed63aa0"
+            }
+          },
+          "dataset_info_sha256": "bdf096b10ee5a4a745df3d9a3db006b862f366fa3aa6b8e6b5ddf14fda5d9501",
+          "state_sha256": "3c698e805fd5fd3987ee1fa817ae1cc1280eb603dbc5c0830bcd51d78ed63aa0"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-8c42cd899c00c4ac7b0375e0f3f0a290",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/college_computer_science/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 51152,
+              "sha256": "99409e1640d6f7f7bd3b4875c57ce9476d226ae43a92c5d746fb0ed12d78611b"
+            },
+            "dataset_info.json": {
+              "bytes": 1301,
+              "sha256": "29268899a20ec17da85fd4d7277b7c2dc6f208f5f3878cd9bacac7285ca11434"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "eddcac4c48b8e59b444a8a6af3ded8b73039fb7f24bdaca4328cf7311af00e21"
+            }
+          },
+          "dataset_info_sha256": "29268899a20ec17da85fd4d7277b7c2dc6f208f5f3878cd9bacac7285ca11434",
+          "state_sha256": "eddcac4c48b8e59b444a8a6af3ded8b73039fb7f24bdaca4328cf7311af00e21"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-929e30d736d147c91e90f2b8b42cee3c",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/jurisprudence/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 34848,
+              "sha256": "c1f2c0010950c2128a7b0f52d94350de7dfee68d0ac9141e3b7e4f32a84f4647"
+            },
+            "dataset_info.json": {
+              "bytes": 1278,
+              "sha256": "d9315f1f1d22fdd377e6001f4d4d05ccefadde8641c0452bd75ecdc19a56edf3"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "d40aa7be0caffb37e1f1eb10b9af7162e601203261beccae9bbe08aa5751a42b"
+            }
+          },
+          "dataset_info_sha256": "d9315f1f1d22fdd377e6001f4d4d05ccefadde8641c0452bd75ecdc19a56edf3",
+          "state_sha256": "d40aa7be0caffb37e1f1eb10b9af7162e601203261beccae9bbe08aa5751a42b"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-a038780da826bf91cdf26a192cf88afb",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/human_sexuality/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 32880,
+              "sha256": "90ea096c4740065aa3552e7d27294c36155081d9b07ac48e80b59c1380f94299"
+            },
+            "dataset_info.json": {
+              "bytes": 1282,
+              "sha256": "67bd94a2635e13ac704024a146d1c4595cb408b670f538a8c32b8ac469eba898"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "aa02d435f6134243b536dd42c11e6d554575c8c0ee609b2febff9ca96735a0dc"
+            }
+          },
+          "dataset_info_sha256": "67bd94a2635e13ac704024a146d1c4595cb408b670f538a8c32b8ac469eba898",
+          "state_sha256": "aa02d435f6134243b536dd42c11e6d554575c8c0ee609b2febff9ca96735a0dc"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-aaebb5d6d621fb89e87d83ae55f38e04",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/astronomy/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 39440,
+              "sha256": "93fc09620f3703f96de76b894e8bbd0b4b4cefa332b5e9c927e0d8f4567c19f0"
+            },
+            "dataset_info.json": {
+              "bytes": 1270,
+              "sha256": "eeaf256b5bed32ca7404f5374a7a0f5c35f537683496a34b8b225c05e1feeea0"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "f4720a2f27751bab8f3f793725ef5189f6ee14b77a37183c456081b51b9491cf"
+            }
+          },
+          "dataset_info_sha256": "eeaf256b5bed32ca7404f5374a7a0f5c35f537683496a34b8b225c05e1feeea0",
+          "state_sha256": "f4720a2f27751bab8f3f793725ef5189f6ee14b77a37183c456081b51b9491cf"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-b33fab94adb097fa5ddc1cd87ff55017",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/logical_fallacies/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 41016,
+              "sha256": "3ee4c6ca906eba69ae338e940d5840e9cf571b8aafb70461ff3a4c06e77cad74"
+            },
+            "dataset_info.json": {
+              "bytes": 1286,
+              "sha256": "0da0ac0ed068ea4e9ab63d6b528e169ed26166131537b2237672c09b51479c81"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "edb6ae553af48cae301a2218176257b12807e150a84601fd5fce29680643bceb"
+            }
+          },
+          "dataset_info_sha256": "0da0ac0ed068ea4e9ab63d6b528e169ed26166131537b2237672c09b51479c81",
+          "state_sha256": "edb6ae553af48cae301a2218176257b12807e150a84601fd5fce29680643bceb"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-b44f33516705dbe6087a6b908758161c",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/moral_scenarios/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 44960,
+              "sha256": "1260226457b8ce1815accb1cacf1ec66219d6fc1e74185fbf881467c9ff634a8"
+            },
+            "dataset_info.json": {
+              "bytes": 1282,
+              "sha256": "cfd36f29eb2dad21ab278e4bebbae5db6317d3000a60f6195e3bd23236e1a352"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "9c1f737600b00c5db6005e77655ce71544aa0bb1e9248bfd1a7f7148a5ea0420"
+            }
+          },
+          "dataset_info_sha256": "cfd36f29eb2dad21ab278e4bebbae5db6317d3000a60f6195e3bd23236e1a352",
+          "state_sha256": "9c1f737600b00c5db6005e77655ce71544aa0bb1e9248bfd1a7f7148a5ea0420"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-b5192ad0b0c488b74e7e98ca857cfde7",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_mathematics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 23872,
+              "sha256": "6cebc23913f3bb76587bdb1da4458fa632a2d3fcd20d21cc74369592d1d94952"
+            },
+            "dataset_info.json": {
+              "bytes": 1298,
+              "sha256": "90fefdbc00d2bff341c0461840f4690097ce34b4f7ad36c2a96de2e6e547adc0"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "1ed00a2d3d1f1df1c53050cc90de3032da44ea1229a9911193646053b5d8e3dd"
+            }
+          },
+          "dataset_info_sha256": "90fefdbc00d2bff341c0461840f4690097ce34b4f7ad36c2a96de2e6e547adc0",
+          "state_sha256": "1ed00a2d3d1f1df1c53050cc90de3032da44ea1229a9911193646053b5d8e3dd"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-b78c05bb2a8158d7eba42c3f167ad82f",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_psychology/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 37648,
+              "sha256": "c77afe0b29d57a3b7d343dafbb37aac5c7076df6c991e173241890c53fa87bb7"
+            },
+            "dataset_info.json": {
+              "bytes": 1296,
+              "sha256": "a1b701997b0942941b63e61ddd6d4f09d36ca40dd233497ac5b63ac93e7a8c89"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "05ced299d1c2a051b43f95fdbd3ec74f9ce6b7c3473e19067cd2c7dc8beab283"
+            }
+          },
+          "dataset_info_sha256": "a1b701997b0942941b63e61ddd6d4f09d36ca40dd233497ac5b63ac93e7a8c89",
+          "state_sha256": "05ced299d1c2a051b43f95fdbd3ec74f9ce6b7c3473e19067cd2c7dc8beab283"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-b99b16d1be96b1c242314276ff739d2b",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/formal_logic/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 45800,
+              "sha256": "a97a5c080974b829332a4a9c679fc0fe1239232acccf1feda2066b72139d84ee"
+            },
+            "dataset_info.json": {
+              "bytes": 1276,
+              "sha256": "3b49f8b2c104c3af851e255a43c4f82a3162beb5d3be0ab75ccb7e306e24c903"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "fa4c37fd65465967aaadcf341a68acd5dead495f5ec136239486a8aaa8e34031"
+            }
+          },
+          "dataset_info_sha256": "3b49f8b2c104c3af851e255a43c4f82a3162beb5d3be0ab75ccb7e306e24c903",
+          "state_sha256": "fa4c37fd65465967aaadcf341a68acd5dead495f5ec136239486a8aaa8e34031"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-c659b43c23f0d5ca8382d5b95433bc0e",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/professional_accounting/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 57480,
+              "sha256": "2150e7b177c072184732d062d6ad2d2b40eced5e8928a7f6860158c8a5eb34a9"
+            },
+            "dataset_info.json": {
+              "bytes": 1299,
+              "sha256": "9eb3ab7becc8babaca64a7a6c19bca00530f3d1374d73978d7b21ed117f33a22"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "65af2852e1786cb96082cd19ed4a79b74ee1c5f6a0b500b78aae65d62ce871c8"
+            }
+          },
+          "dataset_info_sha256": "9eb3ab7becc8babaca64a7a6c19bca00530f3d1374d73978d7b21ed117f33a22",
+          "state_sha256": "65af2852e1786cb96082cd19ed4a79b74ee1c5f6a0b500b78aae65d62ce871c8"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-cc4748adef400b45e2ce83ee90242909",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/sociology/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 43240,
+              "sha256": "5d2770994e132b1cc75cda3511a15e9ab0f345a8774155200059a5c468eb6ecc"
+            },
+            "dataset_info.json": {
+              "bytes": 1270,
+              "sha256": "0c9de06aa33d6e34ec5b37f292d850e74ede9e395e9ef70c0c8b60871fa744f5"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "41c9507c7b62fa8ac41535e62f19228a3a667ec31e629ac34214a7eb20fc1c9e"
+            }
+          },
+          "dataset_info_sha256": "0c9de06aa33d6e34ec5b37f292d850e74ede9e395e9ef70c0c8b60871fa744f5",
+          "state_sha256": "41c9507c7b62fa8ac41535e62f19228a3a667ec31e629ac34214a7eb20fc1c9e"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-cef12d635fdb4b8ab1760e2669cf0ccb",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_geography/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 29944,
+              "sha256": "b44ccc7cda13b09b35f2ec40b02add736023946aa262e0b10cfd9661d71b2831"
+            },
+            "dataset_info.json": {
+              "bytes": 1294,
+              "sha256": "c18a044266769b5e573d86399bafefdc3ee590cd03c92e6aedfdcb71663c1cf0"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "f189b07de2fd698a71c454a76eb0f2bd42d2afff0c569932c1ac1b4c733692f0"
+            }
+          },
+          "dataset_info_sha256": "c18a044266769b5e573d86399bafefdc3ee590cd03c92e6aedfdcb71663c1cf0",
+          "state_sha256": "f189b07de2fd698a71c454a76eb0f2bd42d2afff0c569932c1ac1b4c733692f0"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-d3806f0c6c8ac7216f32c97501e8e337",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/college_biology/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 45088,
+              "sha256": "7780896f251f386f357958ac2fade23ed692e2c36af4281fa66a4ca40cb1a286"
+            },
+            "dataset_info.json": {
+              "bytes": 1282,
+              "sha256": "9d09a5b51e304b48e414ab1f5195bfcea9c531bd9b204fe02c036ab95e80fc79"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "15a1c1e0114a5b9c50f983050175d3ca1bf9c393136822447879c864c94d0592"
+            }
+          },
+          "dataset_info_sha256": "9d09a5b51e304b48e414ab1f5195bfcea9c531bd9b204fe02c036ab95e80fc79",
+          "state_sha256": "15a1c1e0114a5b9c50f983050175d3ca1bf9c393136822447879c864c94d0592"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-d92c238f61eefa4c37e5cf1d433c6e7f",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/human_aging/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 37424,
+              "sha256": "2841fe6f491ec8a7b4b883d25863cecc2bfc42a506bdd539d22c2635490f37a3"
+            },
+            "dataset_info.json": {
+              "bytes": 1274,
+              "sha256": "27596011fe3129836f2ce58f80842bdeed0cdc848103e23b6f5466f28226b840"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "3d9d87b423e1c21668c46b67eb32a8baff65fdc4ada38ed2736f66605c932ace"
+            }
+          },
+          "dataset_info_sha256": "27596011fe3129836f2ce58f80842bdeed0cdc848103e23b6f5466f28226b840",
+          "state_sha256": "3d9d87b423e1c21668c46b67eb32a8baff65fdc4ada38ed2736f66605c932ace"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-d93b43752b68a718ccf4baded0fe3852",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_computer_science/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 49160,
+              "sha256": "ab55e7a898c16a7a9891f55858fc98b520f16d71c67e27a3bb02d57f695f68e0"
+            },
+            "dataset_info.json": {
+              "bytes": 1308,
+              "sha256": "1a7186febfeb945cd995405bd1f333ccd292ba5691324fa112f4088ef1f3800b"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "5854efd6f2c1f644fce82086a2c0fab911e519ef58084844552c74afadc7cfc3"
+            }
+          },
+          "dataset_info_sha256": "1a7186febfeb945cd995405bd1f333ccd292ba5691324fa112f4088ef1f3800b",
+          "state_sha256": "5854efd6f2c1f644fce82086a2c0fab911e519ef58084844552c74afadc7cfc3"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-dd46345b8235d6065bdd895c040f2690",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/marketing/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 34952,
+              "sha256": "83f5fd322f86eec5ef5d8403b833e2df42461edf00db8828f53c91b4cc781dc9"
+            },
+            "dataset_info.json": {
+              "bytes": 1270,
+              "sha256": "c487623c51aad3cfb632e29987f14c590f2c335eb5049e1a2edf0d393c181619"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "d71ccc6f13be8379023f74c882f967eb45c33878eee76d0a8996d8a7a2895f4b"
+            }
+          },
+          "dataset_info_sha256": "c487623c51aad3cfb632e29987f14c590f2c335eb5049e1a2edf0d393c181619",
+          "state_sha256": "d71ccc6f13be8379023f74c882f967eb45c33878eee76d0a8996d8a7a2895f4b"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-de18798f63390567c32280d7a861583e",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/medical_genetics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 29656,
+              "sha256": "6d5fea7f42b37af5a66b883f974243b0da7c11cc470b639274aaebdcb29e35d5"
+            },
+            "dataset_info.json": {
+              "bytes": 1284,
+              "sha256": "7b640c07bcb429bdacb5c2d7f7caa71742dbb24328d1c3acd9244fee08abd025"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "2cc5d03d8915defc6be2591cb88f1c262aea60ea84c8afadd11a6c33d1714e41"
+            }
+          },
+          "dataset_info_sha256": "7b640c07bcb429bdacb5c2d7f7caa71742dbb24328d1c3acd9244fee08abd025",
+          "state_sha256": "2cc5d03d8915defc6be2591cb88f1c262aea60ea84c8afadd11a6c33d1714e41"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-e1f2fd55936b0e33bff16de7ead6fb1f",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/abstract_algebra/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 39368,
+              "sha256": "0ee643317401b490422f67329e9c68d5ee3c63809397cee454ef17db88a6547f"
+            },
+            "dataset_info.json": {
+              "bytes": 1284,
+              "sha256": "07d0bf1f384f8613b30b9f822aa11deac1893cdffd34e3bcd8cb07db5ac929a5"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "bc3bc9c623bb828b5b31967b715d6ee12356c9442695db6763971771f167d332"
+            }
+          },
+          "dataset_info_sha256": "07d0bf1f384f8613b30b9f822aa11deac1893cdffd34e3bcd8cb07db5ac929a5",
+          "state_sha256": "bc3bc9c623bb828b5b31967b715d6ee12356c9442695db6763971771f167d332"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-e55ee90927d94896551eaf4f8110ca63",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/philosophy/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 36304,
+              "sha256": "b96520d6ac68b4e83473adc0c987a6123086ad0c98f54c5228a949114ec64f7c"
+            },
+            "dataset_info.json": {
+              "bytes": 1272,
+              "sha256": "db56d43d291eff078c73eba77d0308dac336259b62fa81645594b8b987c85507"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "75bff5cf5ec7d9bdb29acfad58061990394da750329d0a8e4ba5f2b6e7e17c25"
+            }
+          },
+          "dataset_info_sha256": "db56d43d291eff078c73eba77d0308dac336259b62fa81645594b8b987c85507",
+          "state_sha256": "75bff5cf5ec7d9bdb29acfad58061990394da750329d0a8e4ba5f2b6e7e17c25"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-e64495c21d2038e443a89d2675e81708",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/high_school_statistics/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 56672,
+              "sha256": "ac75e171fe0db0ad16f858a1372af7621497650df4bc5076238bcab888dad5e9"
+            },
+            "dataset_info.json": {
+              "bytes": 1297,
+              "sha256": "7ad7bafacf6b416736aa490bdf2a692c0c07cc318b975512a0a4424673658a0d"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "2bb9da74abf97742122961474eb1ec9917e4cf27c3eff6a6b20203df56971e59"
+            }
+          },
+          "dataset_info_sha256": "7ad7bafacf6b416736aa490bdf2a692c0c07cc318b975512a0a4424673658a0d",
+          "state_sha256": "2bb9da74abf97742122961474eb1ec9917e4cf27c3eff6a6b20203df56971e59"
+        },
+        {
+          "benchmark": "mmlu_redux",
+          "cache_dir": "/home/lhzhang/.cache/modelscope/hub/datasets/datasets/AI-ModelScope_mmlu-redux-2.0-eff955085e115578efcc2e33ec83a5c2",
+          "dataset_name": "mmlu-redux-2.0",
+          "split": [
+            "test"
+          ],
+          "num_examples": 100,
+          "upstream_uri": "hf://datasets/AI-ModelScope/mmlu-redux-2.0@master/professional_psychology/data-00000-of-00001.arrow",
+          "upstream_revision": "master",
+          "files": {
+            "data-00000-of-00001.arrow": {
+              "bytes": 48280,
+              "sha256": "47b5c493ce3663d5d093e1a530666c61469b74b26c860ce398a07d945adf87b0"
+            },
+            "dataset_info.json": {
+              "bytes": 1298,
+              "sha256": "b522fea5cd74ccb055270d6016eb52aea379a3f811389527db61803585052c36"
+            },
+            "state.json": {
+              "bytes": 249,
+              "sha256": "4dec6d03e07083c6daf5dd2f4fcb9b06f2bc504277ed5a785cc2f4018c1d5687"
+            }
+          },
+          "dataset_info_sha256": "b522fea5cd74ccb055270d6016eb52aea379a3f811389527db61803585052c36",
+          "state_sha256": "4dec6d03e07083c6daf5dd2f4fcb9b06f2bc504277ed5a785cc2f4018c1d5687"
+        }
+      ]
+    }
+  }
+}

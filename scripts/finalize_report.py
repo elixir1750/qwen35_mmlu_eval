@@ -46,8 +46,11 @@ def main() -> None:
     def diagnostics_table(name: str, summary: dict) -> str:
         output = summary.get("output_tokens") or {}
         reasoning = summary.get("reasoning_chars") or {}
+        elapsed = summary.get("elapsed_seconds")
+        if elapsed is None and summary.get("elapsed_source") == "monotonic_manifest":
+            elapsed = summary.get("elapsed_seconds_from_log")
         return "\n".join([
-            f"| {name} | {summary.get('total_samples')} | {summary.get('successful_generations')} | {summary.get('invalid_answers')} | {summary.get('truncated_generations')} | {summary.get('api_failures')} | {summary.get('retry_log_occurrences')} | {summary.get('dataset_timeout_occurrences')} | {fmt(summary.get('elapsed_seconds_from_log'))} | {fmt(summary.get('throughput_samples_per_second'))} | {fmt(output.get('mean'))} | {fmt(output.get('max'))} | {fmt(reasoning.get('mean'))} |",
+            f"| {name} | {summary.get('total_samples')} | {summary.get('successful_generations')} | {summary.get('invalid_answers')} | {summary.get('truncated_generations')} | {summary.get('api_failures')} | {summary.get('missing_prediction_rows')} | {summary.get('duplicate_review_rows')} | {summary.get('retry_log_occurrences')} | {summary.get('dataset_timeout_occurrences')} | {fmt(elapsed)} | {fmt(summary.get('throughput_samples_per_second'))} | {fmt(output.get('mean'))} | {fmt(output.get('max'))} | {fmt(reasoning.get('mean'))} |",
         ])
 
     lines = [
@@ -89,8 +92,8 @@ def main() -> None:
         "",
         "## Reliability diagnostics",
         "",
-        "| Benchmark | Total | Successful | Invalid | Truncated | API failures | Retry log occurrences | Dataset timeouts | Elapsed (s) | Samples/s | Avg output tokens | Max output tokens | Avg reasoning chars |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| Benchmark | Total | Successful | Invalid | Truncated | API failures | Missing predictions | Duplicate reviews | Retry log occurrences | Dataset timeouts | Elapsed (s) | Samples/s | Avg output tokens | Max output tokens | Avg reasoning chars |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
         diagnostics_table("MMLU-Pro", pro),
         diagnostics_table("MMLU-Redux", redux),
         "",
@@ -110,6 +113,7 @@ def main() -> None:
         "bash scripts/run_smoke.sh",
         "PORT=8000 EVAL_BATCH_SIZE=8 bash scripts/run_full_eval.sh mmlu_pro",
         "PORT=8001 EVAL_BATCH_SIZE=8 bash scripts/run_full_eval.sh mmlu_redux",
+        "bash scripts/postprocess_full.sh outputs/full/mmlu_pro/<PRO_RUN_ID> outputs/full/mmlu_redux/<REDUX_RUN_ID> REPORT_<PRO_RUN_ID>_<REDUX_RUN_ID>.md",
         "```",
         "",
         "Key commands and all resolved settings are archived in `env/eval_config.json`; raw logs and JSONL outputs are retained under `logs/` and `outputs/`.",

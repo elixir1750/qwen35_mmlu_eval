@@ -101,6 +101,12 @@
       "postprocess_job_id": 94214
     }
   },
+  "dataset_reproducibility": {
+    "cache_manifest": "env/dataset_cache_info.json",
+    "upstream_revision_status": "EvalScope/ModelScope metadata points to @master rather than an immutable upstream commit; local dataset_info/state/data artifact SHA256 values are captured in the manifest",
+    "mmlu_pro_cache_entries": 1,
+    "mmlu_redux_cache_entries": 57
+  },
   "commands": {
     "system_info": "bash scripts/collect_system_info.sh",
     "model_download": "env -u http_proxy -u https_proxy -u all_proxy -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY HF_ENDPOINT=https://hf-mirror.com HF_HUB_DISABLE_XET=1 .venv/bin/hf download Qwen/Qwen3.5-4B --local-dir model/Qwen3.5-4B",
