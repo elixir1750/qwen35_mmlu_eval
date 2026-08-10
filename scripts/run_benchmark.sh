@@ -30,7 +30,15 @@ MODE_OVERRIDE="${MODE:-}"
 RESUME="${RESUME:-0}"
 SKIP_COMPLETED="${SKIP_COMPLETED:-1}"
 NO_AUTO_DOWNLOAD="${NO_AUTO_DOWNLOAD:-0}"
-PORT_BASE="${PORT:-8000}"
+if [[ -n "${PORT:-}" ]]; then
+  PORT_BASE="$PORT"
+elif [[ -n "${SLURM_JOB_ID:-}" ]]; then
+  # Slurm jobs on the same node share the host network namespace.  Derive a
+  # stable per-job port unless the caller explicitly provides one.
+  PORT_BASE="$((8000 + SLURM_JOB_ID % 1000))"
+else
+  PORT_BASE=8000
+fi
 RANDOM_SEED="${RANDOM_SEED:-42}"
 CONTEXT_LENGTH="${CONTEXT_LENGTH:-$("$PYTHON" -c 'import json; print(json.load(open("configs/resources.json"))["context_length"])')}"
 MEM_FRACTION_STATIC="${MEM_FRACTION_STATIC:-$("$PYTHON" -c 'import json; print(json.load(open("configs/resources.json"))["mem_fraction_static"])')}"
