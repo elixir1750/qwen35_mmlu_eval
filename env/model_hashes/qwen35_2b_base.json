@@ -1,0 +1,17 @@
+{
+  "model_name": "Qwen/Qwen3.5-2B-Base",
+  "repo": "Qwen/Qwen3.5-2B-Base",
+  "revision": "b1485b2fa6dfa1287294f269f5fb618e03d52d7c",
+  "model_tag": "qwen35_2b_base",
+  "path": "/home/lhzhang/qwen35_mmlu_eval/model/Qwen3.5-2B-Base",
+  "file_sha256": {
+    "config.json": "ed1c1723241f23f7f4e23430759cbd7dcfb4103cbdfe052bfe7626b57c2615b4",
+    "model.safetensors-00001-of-00001.safetensors": "928acbf11878c32185bbd863514d191769285065ab9ea14fbfe431303f5fdf2d",
+    "model.safetensors.index.json": "74d2ddfe79f10f35b27b498632f02b97b60dd9ec39b35d7c5a890c399284e319",
+    "tokenizer.json": "fe000e3ed39ed12b8d2481d527d44f93c65d37e87645d2dcc80d1bf9d50d2927",
+    "tokenizer_config.json": "e611fbccc7c29ef3b1cafb1cb7ea548d189968632901d678fd62be68c47885de"
+  },
+  "safetensors_shards": [
+    "model.safetensors-00001-of-00001.safetensors"
+  ]
+}
