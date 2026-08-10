@@ -8,6 +8,7 @@ DRY_RUN=0
 INCLUDE_9B="${INCLUDE_9B:-0}"
 SUBMIT_SLURM="${SUBMIT_SLURM:-1}"
 SKIP_COMPLETED="${SKIP_COMPLETED:-1}"
+RESUME="${RESUME:-0}"
 RUN_MODE="${RUN_MODE:-full}"
 MODEL_FILTER=""
 BENCHMARK_FILTER=""
@@ -18,6 +19,7 @@ while [[ $# -gt 0 ]]; do
     --exclude-9b) INCLUDE_9B=0; shift ;;
     --no-submit) SUBMIT_SLURM=0; shift ;;
     --skip-completed) SKIP_COMPLETED=1; shift ;;
+    --resume) RESUME=1; shift ;;
     --run-mode) RUN_MODE="$2"; shift 2 ;;
     --models) MODEL_FILTER="$2"; shift 2 ;;
     --benchmarks) BENCHMARK_FILTER="$2"; shift 2 ;;
@@ -29,6 +31,7 @@ usage: bash scripts/run_benchmark_matrix.sh [options]
   --exclude-9b           run the required 0.8B/2B/4B matrix only
   --no-submit            never submit Slurm jobs; run only on a local GPU
   --skip-completed       pass SKIP_COMPLETED=1 (default)
+  --resume               resume incomplete run directories after manifest validation
   --run-mode smoke|full  select underlying run mode
   --models CSV           restrict model names
   --benchmarks CSV       restrict mmlu_pro,mmlu_redux
@@ -84,8 +87,8 @@ for model in "${models[@]}"; do
   for benchmark in "${benchmarks[@]}"; do
     tag="$("$PROJECT_DIR/.venv/bin/python" scripts/benchmark_config.py resolve "$model" --benchmark "$benchmark" | "$PROJECT_DIR/.venv/bin/python" -c 'import json,sys; print(json.load(sys.stdin)["model"]["model_tag"])')"
     size="$("$PROJECT_DIR/.venv/bin/python" scripts/benchmark_config.py resolve "$model" --benchmark "$benchmark" | "$PROJECT_DIR/.venv/bin/python" -c 'import json,sys; print(json.load(sys.stdin)["model"]["size"])')"
-    run_id="matrix_${tag}_${benchmark}_${SLURM_JOB_ID:-local}_$(date +%Y%m%d_%H%M%S)"
-    command="RUN_MODE=$RUN_MODE SKIP_COMPLETED=$SKIP_COMPLETED RUN_ID=$run_id bash scripts/run_benchmark.sh $model $benchmark"
+    run_id="matrix_${tag}_${benchmark}"
+    command="RUN_MODE=$RUN_MODE SKIP_COMPLETED=$SKIP_COMPLETED RESUME=$RESUME RUN_ID=$run_id bash scripts/run_benchmark.sh $model $benchmark"
     echo "$command"
     if [[ "$DRY_RUN" == "1" ]]; then
       continue
