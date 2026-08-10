@@ -33,9 +33,10 @@ NO_AUTO_DOWNLOAD="${NO_AUTO_DOWNLOAD:-0}"
 if [[ -n "${PORT:-}" ]]; then
   PORT_BASE="$PORT"
 elif [[ -n "${SLURM_JOB_ID:-}" ]]; then
-  # Slurm jobs on the same node share the host network namespace.  Derive a
-  # stable per-job port unless the caller explicitly provides one.
-  PORT_BASE="$((8000 + SLURM_JOB_ID % 1000))"
+  # Slurm jobs on the same node share the host network namespace. Reserve a
+  # four-port block because a post-trained run can launch two settings
+  # sequentially, unless the caller explicitly provides a port.
+  PORT_BASE="$((8000 + (SLURM_JOB_ID % 1000) * 4))"
 else
   PORT_BASE=8000
 fi
@@ -183,7 +184,7 @@ PY
     generation_args+=(--max-tokens "$MAX_TOKENS_OVERRIDE")
   fi
   generation_json=$("$PYTHON" scripts/benchmark_config.py "${generation_args[@]}")
-  settings_json=$("$PYTHON" - "$generation_json" "$PORT_BASE" "$TP_SIZE" "$MEM_FRACTION_STATIC" "$CONTEXT_LENGTH" "$RANDOM_SEED" "$EVAL_BATCH_SIZE" "$CACHE_MODE" <<'PY'
+  settings_json=$("$PYTHON" - "$generation_json" "$((PORT_BASE + index))" "$TP_SIZE" "$MEM_FRACTION_STATIC" "$CONTEXT_LENGTH" "$RANDOM_SEED" "$EVAL_BATCH_SIZE" "$CACHE_MODE" <<'PY'
 import json, sys
 generation=json.loads(sys.argv[1])
 result={**generation, "port":int(sys.argv[2]), "tp_size":int(sys.argv[3]), "mem_fraction_static":float(sys.argv[4]), "context_length":int(sys.argv[5]), "random_seed":int(sys.argv[6]), "eval_batch_size":int(sys.argv[7]), "cache_mode":sys.argv[8], "backend":"sglang", "precision":"bfloat16", "mtp":False, "speculative_decoding":False}
