@@ -177,7 +177,7 @@ generation=json.loads(sys.argv[1])
 result={**generation, "port":int(sys.argv[2]), "tp_size":int(sys.argv[3]), "mem_fraction_static":float(sys.argv[4]), "context_length":int(sys.argv[5]), "random_seed":int(sys.argv[6]), "eval_batch_size":int(sys.argv[7]), "cache_mode":sys.argv[8], "backend":"sglang", "precision":"bfloat16", "mtp":False, "speculative_decoding":False}
 print(json.dumps(result, ensure_ascii=False))
 PY
-)"
+)
   metadata_json=$("$PYTHON" - "$MODEL_NAME" "$model_tag" "$size" "$checkpoint_type" "$SETTING" "$BENCHMARK" "$hash_file" "$generation_json" "$run_dir" <<'PY'
 import json, os, sys
 model_name, model_tag, size, checkpoint_type, setting, benchmark, hash_file, generation, run_dir = sys.argv[1:]
@@ -195,7 +195,7 @@ print(json.dumps({
   "run_directory": run_dir, "resume": os.environ.get("RESUME", "0") == "1"
 }, ensure_ascii=False))
 PY
-)"
+)
   "$PYTHON" scripts/write_manifest.py start --manifest "$manifest" --model-path "$MODEL_PATH" \
     --output-dir "$run_dir" --kind "$RUN_MODE" --backend sglang --benchmark "$BENCHMARK" \
     --command "bash scripts/run_benchmark.sh $MODEL_NAME $BENCHMARK" --settings "$settings_json" --metadata "$metadata_json" >/dev/null
