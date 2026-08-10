@@ -46,14 +46,25 @@ def git_commit(project: Path) -> str | None:
 
 
 def model_metadata(project: Path, model_path: Path) -> dict[str, Any]:
-    metadata: dict[str, Any] = {"path": str(model_path.resolve())}
-    info_path = project / "env/model_info.txt"
-    if info_path.exists():
-        for line in info_path.read_text(encoding="utf-8", errors="replace").splitlines():
-            if line.startswith("hf_revision="):
-                metadata["revision"] = line.split("=", 1)[1]
-                break
+    resolved_path = model_path.resolve()
+    metadata: dict[str, Any] = {"path": str(resolved_path)}
     files: dict[str, str] = {}
+    # model_info.txt is a legacy single-model file and must not be used for a
+    # matrix run: it can describe a different checkpoint.  Prefer the hash
+    # manifest whose recorded path matches this run's checkpoint exactly.
+    hash_dir = project / "env/model_hashes"
+    if hash_dir.exists():
+        for manifest_path in sorted(hash_dir.glob("*.json")):
+            try:
+                candidate = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if Path(candidate.get("path", "")).resolve() != resolved_path:
+                continue
+            if candidate.get("revision"):
+                metadata["revision"] = candidate["revision"]
+            files.update(candidate.get("file_sha256") or {})
+            break
     for relative in (
         "config.json",
         "tokenizer.json",
@@ -64,13 +75,8 @@ def model_metadata(project: Path, model_path: Path) -> dict[str, Any]:
         digest = sha256_file(model_path / relative)
         if digest:
             files[relative] = digest
-    # The large shard hashes were already verified and recorded during model
-    # download. Reusing them avoids hashing 8.8 GB at every benchmark start.
-    if info_path.exists():
-        for line in info_path.read_text(encoding="utf-8", errors="replace").splitlines():
-            if " sha256=" in line:
-                name, digest = line.split(" sha256=", 1)
-                files[name.split()[0]] = digest.strip()
+    # Shard hashes come from the matching per-model manifest above.  Do not
+    # silently fall back to a legacy global file for another checkpoint.
     metadata["file_sha256"] = files
     return metadata
 

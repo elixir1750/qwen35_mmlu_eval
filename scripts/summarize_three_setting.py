@@ -163,7 +163,7 @@ def row(model: dict[str, Any], setting: str, benchmark: str) -> dict[str, Any]:
         "duplicate_predictions": summary.get("duplicate_prediction_rows"),
         "duplicate_reviews": summary.get("duplicate_review_rows"),
         "avg_output_tokens": output_stats.get("mean"),
-        "p95_output_tokens": output_stats.get("p90"),
+        "p95_output_tokens": output_stats.get("p95"),
         "avg_reasoning_chars": reasoning_stats.get("mean"),
         "elapsed_seconds": summary.get("elapsed_seconds"),
         "throughput_samples_per_second": summary.get("throughput_samples_per_second"),
