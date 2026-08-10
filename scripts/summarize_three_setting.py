@@ -59,7 +59,11 @@ def software_versions() -> dict[str, str]:
 
 
 def latest_run(model_tag: str, setting: str, benchmark: str) -> tuple[Path, dict[str, Any], dict[str, Any]] | None:
-    base = ROOT / "outputs/full" / model_tag / setting / benchmark
+    return latest_run_in(ROOT / "outputs/full", model_tag, setting, benchmark)
+
+
+def latest_run_in(root: Path, model_tag: str, setting: str, benchmark: str) -> tuple[Path, dict[str, Any], dict[str, Any]] | None:
+    base = root / model_tag / setting / benchmark
     if not base.exists():
         return None
     candidates: list[tuple[str, Path, dict[str, Any], dict[str, Any]]] = []
@@ -79,6 +83,28 @@ def latest_run(model_tag: str, setting: str, benchmark: str) -> tuple[Path, dict
         return None
     _, directory, manifest, summary = sorted(candidates)[-1]
     return directory, manifest, summary
+
+
+def smoke_rows() -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for model in load_models()["models"]:
+        for setting in model["supported_settings"]:
+            for benchmark in load_benchmarks()["benchmarks"]:
+                found = latest_run_in(ROOT / "outputs/smoke", model["model_tag"], setting, benchmark)
+                if not found:
+                    continue
+                directory, manifest, summary = found
+                rows.append({
+                    "model_repo": model["model_name"], "size": model["size"], "setting": setting,
+                    "benchmark": benchmark, "samples": summary.get("total_samples"),
+                    "accuracy": round(float(summary["accuracy"]) * 100, 4) if summary.get("accuracy") is not None else None,
+                    "invalid_answers": summary.get("invalid_answers"),
+                    "truncated": summary.get("truncated_generations"),
+                    "api_failures": summary.get("api_failures"),
+                    "run_dir": str(directory.relative_to(ROOT)),
+                    "job_id": manifest.get("environment", {}).get("SLURM_JOB_ID"),
+                })
+    return rows
 
 
 def row(model: dict[str, Any], setting: str, benchmark: str) -> dict[str, Any]:
@@ -211,6 +237,21 @@ def render_report(payload: dict[str, Any]) -> str:
 
     lines += [
         "",
+        "## Smoke verification",
+        "",
+        "Smoke 结果只用于验证数据加载、API、模式字段、parser 和答案抽取，不替代 full accuracy。",
+        "",
+        "| Model | Size | Setting | Benchmark | Samples | Accuracy | Invalid | Truncated | API failures | Slurm job | Run |",
+        "|---|---|---|---|---:|---:|---:|---:|---:|---|---|",
+    ]
+    for item in payload.get("smoke_rows", []):
+        lines.append("| " + " | ".join("n/a" if item.get(key) is None else str(item.get(key)) for key in (
+            "model_repo", "size", "setting", "benchmark", "samples", "accuracy",
+            "invalid_answers", "truncated", "api_failures", "job_id", "run_dir",
+        )) + " |")
+
+    lines += [
+        "",
         "## Reliability diagnostics",
         "",
         "每个 completed run 的 `summary.json` 和 `summary_diagnostics.json` 位于对应 run directory。统计中的 API failure 包括缺失 prediction；重复 prediction/review 保留原始重复计数并使用确定性的最后一条记录计分。elapsed 只接受 run manifest 的 monotonic clock。",
@@ -254,6 +295,7 @@ def main() -> int:
         "models_config": "configs/models.json",
         "benchmarks_config": "configs/benchmarks.json",
         "rows": rows,
+        "smoke_rows": smoke_rows(),
         "pending": [item for item in rows if item["status"] == "pending"],
         "comparisons": "computed only when both local scores exist; percentages are absolute points",
     }

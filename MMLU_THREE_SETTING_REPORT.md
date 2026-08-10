@@ -1,6 +1,6 @@
 # Qwen3.5 三种设定 MMLU 评测报告
 
-> 生成日期：2026-08-10；代码提交：`9758107091149f807af375fd3bbc81d31c3721f4`
+> 生成日期：2026-08-10；代码提交：`24465e056abb1172311d657f6dca6b15d782e4bf`
 
 ## Technical summary
 
@@ -64,6 +64,14 @@ Post-trained 行使用官方 model card 公开的对应分数作为参考；Base
 | 4B | mmlu_redux | n/a | n/a | n/a |
 | 9B | mmlu_pro | n/a | n/a | n/a |
 | 9B | mmlu_redux | n/a | n/a | n/a |
+
+## Smoke verification
+
+Smoke 结果只用于验证数据加载、API、模式字段、parser 和答案抽取，不替代 full accuracy。
+
+| Model | Size | Setting | Benchmark | Samples | Accuracy | Invalid | Truncated | API failures | Slurm job | Run |
+|---|---|---|---|---:|---:|---:|---:|---:|---|---|
+| Qwen/Qwen3.5-4B | 4B | thinking | mmlu_pro | 42 | 80.9524 | 0 | 0 | 0 | 94486 | outputs/smoke/qwen35_4b_posttrained/thinking/mmlu_pro/smoke_validation_4b_thinking2 |
 
 ## Reliability diagnostics
 

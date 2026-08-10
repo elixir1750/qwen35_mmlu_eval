@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-08-10",
   "hostname": "storage-hdd",
-  "git_commit": "9758107091149f807af375fd3bbc81d31c3721f4",
+  "git_commit": "24465e056abb1172311d657f6dca6b15d782e4bf",
   "official_card_read_date": "2026-08-10",
   "software": {
     "python": "Python 3.12.8",
@@ -784,6 +784,21 @@
       "status": "pending",
       "provenance": "protocol_transfer",
       "expected_total": 5700
+    }
+  ],
+  "smoke_rows": [
+    {
+      "model_repo": "Qwen/Qwen3.5-4B",
+      "size": "4B",
+      "setting": "thinking",
+      "benchmark": "mmlu_pro",
+      "samples": 42,
+      "accuracy": 80.9524,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_failures": 0,
+      "run_dir": "outputs/smoke/qwen35_4b_posttrained/thinking/mmlu_pro/smoke_validation_4b_thinking2",
+      "job_id": "94486"
     }
   ],
   "pending": [
