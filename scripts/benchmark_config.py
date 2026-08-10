@@ -94,6 +94,7 @@ def generation_config(model: dict[str, Any], setting: str) -> dict[str, Any]:
 
     result = dict(source)
     result["recipe_source"] = recipe_source
+    result["timeout"] = 600
     result["checkpoint_type"] = model["checkpoint_type"]
     if model["checkpoint_type"] == "posttrained":
         result["extra_body"] = {"chat_template_kwargs": {"enable_thinking": setting == "thinking"}}
@@ -149,6 +150,7 @@ def main() -> int:
                 allowed = {
                     "temperature", "top_p", "top_k", "presence_penalty",
                     "repetition_penalty", "max_tokens", "seed", "extra_body",
+                    "timeout",
                 }
                 value = {key: value[key] for key in value if key in allowed}
             if args.max_tokens is not None:
