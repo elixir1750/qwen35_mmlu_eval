@@ -132,6 +132,7 @@ def main() -> int:
     generation_parser.add_argument("setting")
     generation_parser.add_argument("--json", action="store_true")
     generation_parser.add_argument("--evalscope-json", action="store_true")
+    generation_parser.add_argument("--max-tokens", type=int)
     benchmark_parser = sub.add_parser("benchmark")
     benchmark_parser.add_argument("benchmark")
     benchmark_parser.add_argument("--json", action="store_true")
@@ -150,6 +151,8 @@ def main() -> int:
                     "repetition_penalty", "max_tokens", "seed", "extra_body",
                 }
                 value = {key: value[key] for key in value if key in allowed}
+            if args.max_tokens is not None:
+                value["max_tokens"] = args.max_tokens
         elif args.command == "benchmark":
             value = resolve_benchmark(args.benchmark)
         elif args.command == "list-models":

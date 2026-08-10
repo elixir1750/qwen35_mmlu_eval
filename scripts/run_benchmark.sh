@@ -38,6 +38,7 @@ EVAL_BATCH_SIZE="${EVAL_BATCH_SIZE:-8}"
 CACHE_MODE="${CACHE_MODE:-enabled}"
 TP_SIZE_OVERRIDE="${TP_SIZE:-auto}"
 DRY_RUN="${DRY_RUN:-0}"
+MAX_TOKENS_OVERRIDE="${MAX_TOKENS:-}"
 SGLANG_LOG_OVERRIDE="${SGLANG_LOG:-}"
 EVAL_LOG_OVERRIDE="${EVAL_LOG:-}"
 
@@ -147,7 +148,7 @@ PY
     exit 2
   fi
   if [[ -f "$manifest" && "$RESUME" == "1" ]]; then
-    revision="$($PYTHON - "$MODEL_NAME" <<'PY'
+    revision=$("$PYTHON" - "$MODEL_NAME" <<'PY'
 import json, sys
 for item in json.load(open("configs/models.json", encoding="utf-8"))["models"]:
     if item["model_name"] == sys.argv[1]:
@@ -164,15 +165,19 @@ PY
     "$PYTHON" scripts/ensure_model.py "$MODEL_NAME" --path "$MODEL_PATH" >/dev/null
   fi
   hash_file="$PROJECT_DIR/env/model_hashes/${model_tag}.json"
-  generation_json="$("$PYTHON" scripts/benchmark_config.py generation "$MODEL_NAME" "$SETTING" --evalscope-json)"
-  settings_json="$("$PYTHON" - "$generation_json" "$PORT_BASE" "$TP_SIZE" "$MEM_FRACTION_STATIC" "$CONTEXT_LENGTH" "$RANDOM_SEED" "$EVAL_BATCH_SIZE" "$CACHE_MODE" <<'PY'
+  generation_args=(generation "$MODEL_NAME" "$SETTING" --evalscope-json)
+  if [[ -n "$MAX_TOKENS_OVERRIDE" ]]; then
+    generation_args+=(--max-tokens "$MAX_TOKENS_OVERRIDE")
+  fi
+  generation_json=$("$PYTHON" scripts/benchmark_config.py "${generation_args[@]}")
+  settings_json=$("$PYTHON" - "$generation_json" "$PORT_BASE" "$TP_SIZE" "$MEM_FRACTION_STATIC" "$CONTEXT_LENGTH" "$RANDOM_SEED" "$EVAL_BATCH_SIZE" "$CACHE_MODE" <<'PY'
 import json, sys
 generation=json.loads(sys.argv[1])
 result={**generation, "port":int(sys.argv[2]), "tp_size":int(sys.argv[3]), "mem_fraction_static":float(sys.argv[4]), "context_length":int(sys.argv[5]), "random_seed":int(sys.argv[6]), "eval_batch_size":int(sys.argv[7]), "cache_mode":sys.argv[8], "backend":"sglang", "precision":"bfloat16", "mtp":False, "speculative_decoding":False}
 print(json.dumps(result, ensure_ascii=False))
 PY
 )"
-  metadata_json="$("$PYTHON" - "$MODEL_NAME" "$model_tag" "$size" "$checkpoint_type" "$SETTING" "$BENCHMARK" "$hash_file" "$generation_json" "$run_dir" <<'PY'
+  metadata_json=$("$PYTHON" - "$MODEL_NAME" "$model_tag" "$size" "$checkpoint_type" "$SETTING" "$BENCHMARK" "$hash_file" "$generation_json" "$run_dir" <<'PY'
 import json, os, sys
 model_name, model_tag, size, checkpoint_type, setting, benchmark, hash_file, generation, run_dir = sys.argv[1:]
 hashes=json.load(open(hash_file, encoding="utf-8")) if os.path.exists(hash_file) else {}
@@ -243,7 +248,7 @@ PY
 
   "$PYTHON" scripts/api_smoke.py --model "$MODEL_NAME" --mode "$SETTING" \
     --base-url "http://127.0.0.1:${PORT}/v1" --output "$run_dir/mode_smoke_raw.json" \
-    --max-tokens 32768 --seed "$RANDOM_SEED" | tee "$run_dir/mode_smoke.json"
+    --max-tokens "${MAX_TOKENS_OVERRIDE:-32768}" --seed "$RANDOM_SEED" | tee "$run_dir/mode_smoke.json"
 
   eval_args=(
     --model "$MODEL_NAME" --model-id "${model_tag}-${SETTING}-sglang" \
