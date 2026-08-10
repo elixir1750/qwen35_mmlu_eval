@@ -117,8 +117,16 @@ for index in "${!SETTINGS[@]}"; do
     run_id="${RUN_ID}_$SETTING"
   fi
   run_dir="$PROJECT_DIR/outputs/$RUN_MODE/$model_tag/$SETTING/$BENCHMARK/$run_id"
-  server_log="${SGLANG_LOG_OVERRIDE:-$PROJECT_DIR/logs/${model_tag}-${SETTING}-${BENCHMARK}-${run_id}.log}"
-  eval_log="${EVAL_LOG_OVERRIDE:-$PROJECT_DIR/logs/evalscope-${model_tag}-${SETTING}-${BENCHMARK}-${run_id}.log}"
+  if [[ "${#SETTINGS[@]}" -gt 1 && -n "$SGLANG_LOG_OVERRIDE" ]]; then
+    server_log="${SGLANG_LOG_OVERRIDE}.${SETTING}"
+  else
+    server_log="${SGLANG_LOG_OVERRIDE:-$PROJECT_DIR/logs/${model_tag}-${SETTING}-${BENCHMARK}-${run_id}.log}"
+  fi
+  if [[ "${#SETTINGS[@]}" -gt 1 && -n "$EVAL_LOG_OVERRIDE" ]]; then
+    eval_log="${EVAL_LOG_OVERRIDE}.${SETTING}"
+  else
+    eval_log="${EVAL_LOG_OVERRIDE:-$PROJECT_DIR/logs/evalscope-${model_tag}-${SETTING}-${BENCHMARK}-${run_id}.log}"
+  fi
   manifest="$run_dir/run_manifest.json"
   mkdir -p "$run_dir" "$PROJECT_DIR/logs"
 
