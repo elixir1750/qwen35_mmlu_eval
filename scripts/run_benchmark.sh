@@ -138,6 +138,17 @@ PY
     echo "refusing to reuse non-empty output directory without RESUME=1: $run_dir" >&2
     exit 2
   fi
+  if [[ -f "$manifest" && "$RESUME" == "1" ]]; then
+    revision="$($PYTHON - "$MODEL_NAME" <<'PY'
+import json, sys
+for item in json.load(open("configs/models.json", encoding="utf-8"))["models"]:
+    if item["model_name"] == sys.argv[1]:
+        print(item["revision"])
+        break
+PY
+)
+    "$PYTHON" scripts/validate_resume.py "$manifest" --model "$MODEL_NAME" --setting "$SETTING" --benchmark "$BENCHMARK" --revision "$revision"
+  fi
 
   if [[ "$NO_AUTO_DOWNLOAD" == "1" ]]; then
     "$PYTHON" scripts/ensure_model.py "$MODEL_NAME" --path "$MODEL_PATH" --no-auto-download >/dev/null
