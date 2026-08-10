@@ -1,49 +1,45 @@
-# Qwen3.5-4B MMLU Evaluation
+# Qwen3.5 MMLU 三种设定评测
 
-可复查的 `Qwen/Qwen3.5-4B` + SGLang + EvalScope benchmark pipeline，覆盖 MMLU-Pro 和 MMLU-Redux。
+本仓库提供 Qwen3.5 Base、Post-trained Thinking、Post-trained Non-Thinking 的可复查生成式 MMLU-Pro/MMLU-Redux pipeline。模型 registry、固定 Hugging Face revision、EvalScope adapter 信息和资源策略分别在 `configs/models.json`、`configs/benchmarks.json`、`configs/resources.json`。
 
-## Repository contents
+模型权重、`.venv`、raw prediction/review JSONL、运行日志和 Slurm 临时输出不提交 Git。checkpoint 必须是固定 revision 的原始 Hugging Face safetensors，不使用量化、GGUF、MTP 或 speculative decoding。
 
-- `scripts/`: system inspection, SGLang launch, smoke/full evaluation, throughput benchmark and report-generation scripts.
-- `env/`: resolved hardware/software/model/benchmark metadata and full-evaluation summaries.
-- `REPORT.md`: completed local reproduction report.
-- `THROUGHPUT_REPORT.md`: structured SGLang versus direct-Transformers throughput report.
+## 唯一必要入口
 
-为避免 GitHub 大文件和凭据风险，模型权重、`.venv`、raw prediction/review JSONL、运行日志和 Slurm 临时日志不纳入 Git。模型必须单独下载为原始 `Qwen/Qwen3.5-4B` safetensors。
-
-## Re-run
+普通用户只需提供模型名和 benchmark：
 
 ```bash
-cd qwen35_mmlu_eval
-uv venv .venv --python 3.12
-# 依照 env/software_versions.txt 安装依赖
-
-export HF_ENDPOINT=https://hf-mirror.com
-.venv/bin/hf download Qwen/Qwen3.5-4B --local-dir model/Qwen3.5-4B
-
-bash scripts/run_smoke.sh
-PRO_ID="$(date +%Y%m%d_%H%M%S)_pro"
-REDUX_ID="$(date +%Y%m%d_%H%M%S)_redux"
-PORT=8000 EVAL_BATCH_SIZE=8 RUN_ID="$PRO_ID" bash scripts/run_full_eval.sh mmlu_pro
-PORT=8001 EVAL_BATCH_SIZE=8 RUN_ID="$REDUX_ID" bash scripts/run_full_eval.sh mmlu_redux
-bash scripts/postprocess_full.sh \
-  "outputs/full/mmlu_pro/$PRO_ID" "outputs/full/mmlu_redux/$REDUX_ID" \
-  "REPORT_${PRO_ID}_${REDUX_ID}.md"
-
-# quick throughput: SGLang online + persistent direct Transformers single-stream
-bash scripts/run_throughput.sh --backend all --quick --cache-mode enabled
-.venv/bin/python scripts/summarize_throughput.py --raw-dir outputs/throughput/raw/<RUN_ID>
+RUN_MODE=smoke bash scripts/run_benchmark.sh Qwen/Qwen3.5-0.8B mmlu_pro
+bash scripts/run_benchmark.sh Qwen/Qwen3.5-2B-Base mmlu_redux
 ```
 
-`run_smoke.sh` 和 `run_full_eval.sh` 默认生成带时间戳的独立目录，并写入
-`run_manifest.json`；重复使用已有目录必须显式设置 `RESUME=1`。完整评测的旧结果
-不会被新运行覆盖。吞吐测试的 raw JSON、日志和 manifest 位于
-`outputs/throughput/{raw,logs,manifests}/`，不会提交 Git。
+Post-trained 模型默认顺序运行 Thinking 和 Non-Thinking；名称以 `-Base` 结尾的模型只运行 Base。默认 `RUN_MODE=full`、BF16、seed 42、context length 65536。可用 `MODE=thinking|non_thinking|both`、`RESUME=1`、`NO_AUTO_DOWNLOAD=1`、`TP_SIZE`、`EVAL_BATCH_SIZE` 等环境变量覆盖。
 
-`evalscope perf` 是当前安装版本的实际性能入口，但固定 token-ID 输入、固定输出长度、
-TTFT/TPOT 和逐请求长度校验由 `scripts/throughput_benchmark.py` 直接完成，以避免
-自由生成长度不同导致错误的 request/s 比较。当前环境的 `transformers serve` CLI
-因 `transformers==5.3.0` 与 `huggingface_hub==1.26.1` 注解兼容问题无法启动，因此
-Transformers 并发在线服务不冒充可比结果；报告只计算同长度单流 output-tok speedup。
+输出为：
 
-详细配置、版本、dataset ID、shot、generation 参数和 job 信息见 `env/eval_config.json`。
+```text
+outputs/<smoke|full>/<model_tag>/<setting>/<benchmark>/<run_id>/
+```
+
+每个 run 保存 manifest、API readiness、mode smoke、EvalScope 配置、summary 和 diagnostics；Thinking 的服务端使用 `qwen3` reasoning parser，Non-Thinking 和 Base 不使用 parser。
+
+## 矩阵
+
+```bash
+bash scripts/run_benchmark_matrix.sh --dry-run --exclude-9b
+bash scripts/run_benchmark_matrix.sh --exclude-9b
+```
+
+矩阵入口仍然调用同一个两参数底层入口。9B 默认不提交，只有存在合适 BF16 GPU 时显式使用 `--include-9b`；不会自动量化。
+
+## 汇总和测试
+
+```bash
+python scripts/summarize_three_setting.py
+python -m unittest -v scripts.test_summarize_eval scripts.test_benchmark_config
+bash -n scripts/*.sh
+```
+
+统一结果见 `env/mmlu_three_setting_summary.json` 和 `MMLU_THREE_SETTING_REPORT.md`。历史 4B 结果仍保留在原来的 `REPORT.md`、`env/mmlu_*_full_summary.json`，不会被新矩阵覆盖。
+
+旧的 `run_smoke.sh` / `run_full_eval.sh` 只作为兼容 wrapper，要求显式设置 `MODEL_NAME`；新实验请直接使用 `run_benchmark.sh`。

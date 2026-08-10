@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "precision": "bfloat16",
+  "context_length": 65536,
+  "mem_fraction_static": 0.75,
+  "tp_size": "auto",
+  "attention_backend": "auto",
+  "disable_mtp": true,
+  "disable_speculative_decoding": true,
+  "slurm": {
+    "partition_preference": [],
+    "gres": "gpu:1",
+    "cpus_per_task": 8,
+    "memory": "48G",
+    "time": "24:00:00"
+  },
+  "selection_policy": {
+    "prefer_local_gpu": true,
+    "single_gpu_when_model_fits": true,
+    "never_quantize": true,
+    "allow_tensor_parallel": true
+  }
+}

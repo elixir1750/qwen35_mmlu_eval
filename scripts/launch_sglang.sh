@@ -6,14 +6,15 @@ if [[ -n "${SLURM_SUBMIT_DIR:-}" ]]; then
 else
   PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 fi
-MODEL_PATH="${MODEL_PATH:-$PROJECT_DIR/model/Qwen3.5-4B}"
+MODEL_PATH="${MODEL_PATH:?MODEL_PATH must point to a local Hugging Face checkpoint}"
 PORT="${PORT:-8000}"
 TP_SIZE="${TP_SIZE:-1}"
-MEM_FRACTION_STATIC="${MEM_FRACTION_STATIC:-0.8}"
-CONTEXT_LENGTH="${CONTEXT_LENGTH:-131072}"
-SERVED_MODEL_NAME="${SERVED_MODEL_NAME:-Qwen/Qwen3.5-4B}"
+MEM_FRACTION_STATIC="${MEM_FRACTION_STATIC:-0.75}"
+CONTEXT_LENGTH="${CONTEXT_LENGTH:-65536}"
+SERVED_MODEL_NAME="${SERVED_MODEL_NAME:?SERVED_MODEL_NAME must match the requested model}"
 RANDOM_SEED="${RANDOM_SEED:-42}"
 DISABLE_RADIX_CACHE="${DISABLE_RADIX_CACHE:-0}"
+REASONING_PARSER="${REASONING_PARSER:-}"
 LOG_PATH="${SGLANG_LOG:-$PROJECT_DIR/logs/sglang.log}"
 TORCHINDUCTOR_CACHE_DIR="${TORCHINDUCTOR_CACHE_DIR:-/tmp/qwen35_torchinductor_${SLURM_JOB_ID:-local}}"
 CUDA_HOME="${CUDA_HOME:-/data1/public/cuda/cuda-12.8}"
@@ -36,8 +37,10 @@ SERVER_ARGS=(
   --context-length "$CONTEXT_LENGTH"
   --served-model-name "$SERVED_MODEL_NAME"
   --random-seed "$RANDOM_SEED"
-  --reasoning-parser qwen3
 )
+if [[ -n "$REASONING_PARSER" ]]; then
+  SERVER_ARGS+=(--reasoning-parser "$REASONING_PARSER")
+fi
 if [[ "$DISABLE_RADIX_CACHE" == "1" ]]; then
   SERVER_ARGS+=(--disable-radix-cache)
 fi

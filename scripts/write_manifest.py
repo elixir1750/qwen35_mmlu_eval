@@ -84,6 +84,25 @@ def selected_environment() -> dict[str, str]:
     return {name: os.environ[name] for name in names if os.environ.get(name)}
 
 
+def hardware_metadata() -> dict[str, Any]:
+    result: dict[str, Any] = {"hostname": platform.node()}
+    try:
+        output = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=name,driver_version,memory.total", "--format=csv,noheader"],
+            text=True, stderr=subprocess.DEVNULL,
+        ).strip()
+        devices = []
+        for line in output.splitlines():
+            parts = [part.strip() for part in line.split(",")]
+            if len(parts) == 3:
+                devices.append({"name": parts[0], "driver": parts[1], "memory_total": parts[2]})
+        if devices:
+            result.update({"gpu_count": len(devices), "gpu_name": ", ".join(sorted({item["name"] for item in devices})), "gpus": devices})
+    except (OSError, subprocess.CalledProcessError):
+        result["gpu_count"] = 0
+    return result
+
+
 def start(args: argparse.Namespace) -> None:
     project = args.project_dir.resolve()
     model_path = args.model_path.resolve()
@@ -101,6 +120,7 @@ def start(args: argparse.Namespace) -> None:
         "wall_clock_start_ns": time.time_ns(),
         "monotonic_start_ns": time.monotonic_ns(),
         "hostname": platform.node(),
+        "hardware": hardware_metadata(),
         "pid": os.getpid(),
         "git_commit": git_commit(project),
         "model": model_metadata(project, model_path),
@@ -111,6 +131,8 @@ def start(args: argparse.Namespace) -> None:
         "environment": selected_environment(),
         "settings": json.loads(args.settings) if args.settings else {},
     }
+    if args.metadata:
+        manifest.update(json.loads(args.metadata))
     args.manifest.parent.mkdir(parents=True, exist_ok=True)
     args.manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(args.manifest)
@@ -146,6 +168,7 @@ def main() -> None:
     start_parser.add_argument("--benchmark")
     start_parser.add_argument("--command", required=True)
     start_parser.add_argument("--settings")
+    start_parser.add_argument("--metadata")
     start_parser.set_defaults(func=start)
 
     finish_parser = sub.add_parser("finish")

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "official_card_read_date": "2026-08-10",
+  "models": [
+    {
+      "model_name": "Qwen/Qwen3.5-0.8B",
+      "model_tag": "qwen35_0_8b_posttrained",
+      "size": "0.8B",
+      "checkpoint_type": "posttrained",
+      "repo": "Qwen/Qwen3.5-0.8B",
+      "local_path": "model/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B",
+      "supported_settings": ["thinking", "non_thinking"],
+      "official_scores": {
+        "thinking": {"mmlu_pro": 42.3, "mmlu_redux": 59.5},
+        "non_thinking": {"mmlu_pro": 29.7, "mmlu_redux": 48.5}
+      },
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "recipes": {
+        "thinking": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42},
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-0.8B-Base",
+      "model_tag": "qwen35_0_8b_base",
+      "size": "0.8B",
+      "checkpoint_type": "base",
+      "repo": "Qwen/Qwen3.5-0.8B-Base",
+      "local_path": "model/Qwen3.5-0.8B-Base",
+      "revision": "dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-0.8B-Base",
+      "supported_settings": ["base"],
+      "official_scores": null,
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "base_recipe_source": "posttrained_non_thinking_transfer",
+      "recipes": {
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-2B",
+      "model_tag": "qwen35_2b_posttrained",
+      "size": "2B",
+      "checkpoint_type": "posttrained",
+      "repo": "Qwen/Qwen3.5-2B",
+      "local_path": "model/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-2B",
+      "supported_settings": ["thinking", "non_thinking"],
+      "official_scores": {
+        "thinking": {"mmlu_pro": 66.5, "mmlu_redux": 79.6},
+        "non_thinking": {"mmlu_pro": 55.3, "mmlu_redux": 69.2}
+      },
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "recipes": {
+        "thinking": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42},
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-2B-Base",
+      "model_tag": "qwen35_2b_base",
+      "size": "2B",
+      "checkpoint_type": "base",
+      "repo": "Qwen/Qwen3.5-2B-Base",
+      "local_path": "model/Qwen3.5-2B-Base",
+      "revision": "b1485b2fa6dfa1287294f269f5fb618e03d52d7c",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-2B-Base",
+      "supported_settings": ["base"],
+      "official_scores": null,
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "base_recipe_source": "posttrained_non_thinking_transfer",
+      "recipes": {
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-4B",
+      "model_tag": "qwen35_4b_posttrained",
+      "size": "4B",
+      "checkpoint_type": "posttrained",
+      "repo": "Qwen/Qwen3.5-4B",
+      "local_path": "model/Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-4B",
+      "supported_settings": ["thinking", "non_thinking"],
+      "official_scores": {
+        "thinking": {"mmlu_pro": 79.1, "mmlu_redux": 88.8},
+        "non_thinking": {"mmlu_pro": null, "mmlu_redux": null}
+      },
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "recipes": {
+        "thinking": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42},
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-4B-Base",
+      "model_tag": "qwen35_4b_base",
+      "size": "4B",
+      "checkpoint_type": "base",
+      "repo": "Qwen/Qwen3.5-4B-Base",
+      "local_path": "model/Qwen3.5-4B-Base",
+      "revision": "1001bb4d826a52d1f399e183466143f4da7b741b",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-4B-Base",
+      "supported_settings": ["base"],
+      "official_scores": null,
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "base_recipe_source": "posttrained_non_thinking_transfer",
+      "recipes": {
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-9B",
+      "model_tag": "qwen35_9b_posttrained",
+      "size": "9B",
+      "checkpoint_type": "posttrained",
+      "repo": "Qwen/Qwen3.5-9B",
+      "local_path": "model/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-9B",
+      "supported_settings": ["thinking", "non_thinking"],
+      "official_scores": {
+        "thinking": {"mmlu_pro": 82.5, "mmlu_redux": 91.1},
+        "non_thinking": {"mmlu_pro": null, "mmlu_redux": null}
+      },
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "recipes": {
+        "thinking": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42},
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    },
+    {
+      "model_name": "Qwen/Qwen3.5-9B-Base",
+      "model_tag": "qwen35_9b_base",
+      "size": "9B",
+      "checkpoint_type": "base",
+      "repo": "Qwen/Qwen3.5-9B-Base",
+      "local_path": "model/Qwen3.5-9B-Base",
+      "revision": "68c46c4b3498877f3ef123c856ecfde50c39f404",
+      "official_card_url": "https://huggingface.co/Qwen/Qwen3.5-9B-Base",
+      "supported_settings": ["base"],
+      "official_scores": null,
+      "preferred_precision": "bfloat16",
+      "context_length": 65536,
+      "base_recipe_source": "posttrained_non_thinking_transfer",
+      "recipes": {
+        "non_thinking": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 32768, "seed": 42}
+      }
+    }
+  ]
+}

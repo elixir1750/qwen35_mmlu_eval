@@ -8,6 +8,7 @@ import json
 import math
 import re
 import statistics
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -110,6 +111,9 @@ def manifest_elapsed(manifest_path: Path | None) -> tuple[float | None, str]:
     value = data.get("monotonic_duration_seconds")
     if isinstance(value, (int, float)) and value >= 0:
         return float(value), "monotonic_manifest"
+    start_ns = data.get("monotonic_start_ns")
+    if isinstance(start_ns, int) and start_ns > 0:
+        return (time.monotonic_ns() - start_ns) / 1_000_000_000, "monotonic_live_manifest"
     return None, "missing_monotonic_duration"
 
 

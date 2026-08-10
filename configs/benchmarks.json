@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "benchmarks": {
+    "mmlu_pro": {
+      "dataset_id": "TIGER-Lab/MMLU-Pro",
+      "dataset_hub": "modelscope",
+      "eval_split": "test",
+      "few_shot": 5,
+      "few_shot_split": "validation",
+      "few_shot_source": "EvalScope built-in mmlu_pro adapter",
+      "expected_total": 12032,
+      "answer_letters": "ABCDEFGHIJ",
+      "adapter": "evalscope.benchmarks.mmlu_pro.mmlu_pro_adapter",
+      "prompt_template": "EvalScope 1.10.0 built-in MMLU-Pro standard CoT/few-shot template",
+      "answer_extraction": "EvalScope built-in multiple-choice extraction from final response"
+    },
+    "mmlu_redux": {
+      "dataset_id": "AI-ModelScope/mmlu-redux-2.0",
+      "dataset_hub": "modelscope",
+      "eval_split": "test",
+      "few_shot": 0,
+      "few_shot_split": null,
+      "few_shot_source": "none; EvalScope built-in mmlu_redux adapter",
+      "expected_total": 5700,
+      "answer_letters": "ABCD",
+      "adapter": "evalscope.benchmarks.mmlu_redux.mmlu_redux_adapter",
+      "prompt_template": "EvalScope 1.10.0 built-in MMLU-Redux SINGLE_ANSWER_COT template",
+      "answer_extraction": "EvalScope built-in multiple-choice extraction from final response"
+    }
+  }
+}

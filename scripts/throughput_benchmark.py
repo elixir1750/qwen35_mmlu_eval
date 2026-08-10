@@ -331,7 +331,7 @@ def main() -> None:
     parser.add_argument("--backend", choices=("sglang", "transformers"), required=True)
     parser.add_argument("--layer", choices=("single", "online"), default="single")
     parser.add_argument("--model-path", type=Path, required=True)
-    parser.add_argument("--model-name", dest="model_name", default="Qwen/Qwen3.5-4B")
+    parser.add_argument("--model-name", dest="model_name", required=True)
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--context-length", type=int, default=65536)
     parser.add_argument("--input-length", type=int, nargs="+", default=[256])

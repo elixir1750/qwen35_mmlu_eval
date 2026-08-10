@@ -11,7 +11,8 @@ unset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY
 BACKEND=all
 MODE=quick
 PORT=8000
-MODEL_PATH="${MODEL_PATH:-$PROJECT_DIR/model/Qwen3.5-4B}"
+MODEL_PATH="${MODEL_PATH:-}"
+MODEL_NAME="${MODEL_NAME:-}"
 CONTEXT_LENGTH=65536
 CONCURRENCY=
 INPUT_LENGTH=
@@ -32,6 +33,7 @@ while [[ $# -gt 0 ]]; do
     --full) MODE=full; shift ;;
     --port) PORT="$2"; shift 2 ;;
     --model-path) MODEL_PATH="$2"; shift 2 ;;
+    --model-name) MODEL_NAME="$2"; shift 2 ;;
     --context-length) CONTEXT_LENGTH="$2"; shift 2 ;;
     --concurrency) CONCURRENCY="$2"; shift 2 ;;
     --input-length) INPUT_LENGTH="$2"; shift 2 ;;
@@ -46,6 +48,7 @@ done
 
 case "$BACKEND" in sglang|transformers|all) ;; *) echo "invalid --backend: $BACKEND" >&2; exit 2 ;; esac
 case "$CACHE_MODE" in disabled|enabled) ;; *) echo "invalid --cache-mode: $CACHE_MODE" >&2; exit 2 ;; esac
+[[ -n "$MODEL_PATH" && -n "$MODEL_NAME" ]] || { echo "--model-path and --model-name (or MODEL_PATH/MODEL_NAME) are required" >&2; exit 2; }
 
 if [[ "$MODE" == "full" ]]; then
   INPUT_LENGTH="${INPUT_LENGTH:-1024}"
@@ -77,7 +80,7 @@ if [[ "$DRY_RUN" == "1" ]]; then
   dry_backends=("$BACKEND")
   [[ "$BACKEND" == "all" ]] && dry_backends=(sglang transformers)
   for dry_backend in "${dry_backends[@]}"; do
-    .venv/bin/python scripts/throughput_benchmark.py --backend "$dry_backend" --layer online \
+  .venv/bin/python scripts/throughput_benchmark.py --backend "$dry_backend" --layer online --model-name "$MODEL_NAME" \
       --model-path "$MODEL_PATH" --port "$PORT" --context-length "$CONTEXT_LENGTH" \
       "${INPUT_ARGS[@]}" "${OUTPUT_ARGS[@]}" "${CONCURRENCY_ARGS[@]}" \
       --repeats "$REPEATS" --cache-mode "$CACHE_MODE" --output "$RAW_DIR/dry-run-${dry_backend}.json" --dry-run
@@ -119,12 +122,13 @@ finish() {
 }
 trap finish EXIT INT TERM
 
-common=(--model-path "$MODEL_PATH" --context-length "$CONTEXT_LENGTH" "${INPUT_ARGS[@]}" "${OUTPUT_ARGS[@]}" --repeats "$REPEATS" --cache-mode "$CACHE_MODE" --project-dir "$PROJECT_DIR")
+common=(--model-path "$MODEL_PATH" --model-name "$MODEL_NAME" --context-length "$CONTEXT_LENGTH" "${INPUT_ARGS[@]}" "${OUTPUT_ARGS[@]}" --repeats "$REPEATS" --cache-mode "$CACHE_MODE" --project-dir "$PROJECT_DIR")
 
 run_sglang() {
   local cache_flag=0
   [[ "$CACHE_MODE" == "disabled" ]] && cache_flag=1
   export MODEL_PATH PORT CONTEXT_LENGTH
+  export SERVED_MODEL_NAME="$MODEL_NAME"
   export TP_SIZE="${TP_SIZE:-1}"
   export MEM_FRACTION_STATIC="${MEM_FRACTION_STATIC:-0.75}"
   export RANDOM_SEED=42
@@ -134,7 +138,7 @@ run_sglang() {
   bash scripts/launch_sglang.sh &
   SERVER_PID=$!
   for attempt in $(seq 1 180); do
-    if .venv/bin/python scripts/check_api_ready.py --port "$PORT" > "$RAW_DIR/sglang_readiness.json" 2> "$LOG_DIR/readiness.err"; then
+    if .venv/bin/python scripts/check_api_ready.py --port "$PORT" --model "$MODEL_NAME" > "$RAW_DIR/sglang_readiness.json" 2> "$LOG_DIR/readiness.err"; then
       break
     fi
     if ! kill -0 "$SERVER_PID" 2>/dev/null; then

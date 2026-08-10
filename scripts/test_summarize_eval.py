@@ -37,6 +37,7 @@ class SummarizeFixtureTest(unittest.TestCase):
                 prediction(1, "ANSWER: B"),  # invalid extraction for A-D? B is valid, but target is A
                 prediction(3, error={"message": "timeout"}),
                 prediction(4, "ANSWER: A", finish="length"),
+                prediction(5, "ANSWER: Z"),
             ]
             review_rows = [
                 review(0),
@@ -45,6 +46,7 @@ class SummarizeFixtureTest(unittest.TestCase):
                 review(2),  # missing prediction
                 review(3),  # API error prediction
                 review(4),  # truncated prediction
+                review(5, answer="Z"),  # invalid answer
             ]
             pred_path = root / "predictions/mmlu_pro_fixture_subject.jsonl"
             review_path = root / "reviews/mmlu_pro_fixture_subject.jsonl"
@@ -58,12 +60,13 @@ class SummarizeFixtureTest(unittest.TestCase):
                 "--output-dir", str(root), "--run-manifest", str(manifest), "--out", str(output),
             ], check=True)
             summary = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(summary["total_samples"], 5)
+            self.assertEqual(summary["total_samples"], 6)
             self.assertEqual(summary["duplicate_prediction_rows"], 1)
             self.assertEqual(summary["duplicate_review_rows"], 1)
             self.assertEqual(summary["missing_prediction_rows"], 1)
             self.assertEqual(summary["api_failures"], 2)  # missing + explicit API error
             self.assertEqual(summary["truncated_generations"], 1)
+            self.assertEqual(summary["invalid_answers"], 1)
             self.assertIsNone(summary["throughput_samples_per_second"])
             self.assertEqual(summary["elapsed_source"], "monotonic_manifest")
 

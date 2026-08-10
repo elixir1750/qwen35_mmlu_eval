@@ -35,6 +35,7 @@ def main() -> None:
 
     project = args.project_dir
     config = json.loads((project / "env/eval_config.json").read_text(encoding="utf-8"))
+    model_repo = config["model"]["repo"]
     pro = json.loads(args.pro_summary.read_text(encoding="utf-8"))
     redux = json.loads(args.redux_summary.read_text(encoding="utf-8"))
     out = args.out or (project / "REPORT.md")
@@ -54,7 +55,7 @@ def main() -> None:
         ])
 
     lines = [
-        "# Qwen3.5-4B MMLU Evaluation Report",
+        f"# {model_repo} MMLU Evaluation Report",
         "",
         f"Generated: {datetime.now().astimezone().isoformat(timespec='seconds')}",
         "",
@@ -71,7 +72,7 @@ def main() -> None:
         f"- Repository: `{config['model']['repo']}`",
         f"- Local path: `{config['model']['local_path']}`",
         f"- Revision: `{config['model']['revision']}`",
-        "- Model type: post-trained Qwen3.5-4B; original Hugging Face safetensors checkpoint; no quantization, GGUF/AWQ/GPTQ/MLX conversion, MTP, or speculative decoding.",
+        f"- Model type: post-trained {model_repo}; original Hugging Face safetensors checkpoint; no quantization, GGUF/AWQ/GPTQ/MLX conversion, MTP, or speculative decoding.",
         "",
         "## Evaluation Protocol",
         "",
@@ -102,7 +103,7 @@ def main() -> None:
         "## Error inspection and interpretation",
         "",
         f"- The first standard-recipe smoke results were MMLU-Pro {pct(config['smoke_diagnostics']['mmlu_pro_accuracy'])} and MMLU-Redux {pct(config['smoke_diagnostics']['mmlu_redux_smoke_accuracy'])}; both had zero invalid, truncated, and API-error samples.",
-        "- This is explicitly a `Qwen3.5-4B + SGLang + EvalScope standard-recipe reproduction`, not an official exact-recipe claim. The model card does not publish every evaluator implementation detail needed to establish exact identity.",
+        f"- This is explicitly a `{model_repo} + SGLang + EvalScope standard-recipe reproduction`, not an official exact-recipe claim. The model card does not publish every evaluator implementation detail needed to establish exact identity.",
         f"- Based on the largest full-evaluation gap, the result is classified as **{classification}**.",
         "- If the gap is material, the next variants should be recorded separately and checked in order: model/revision, thinking/parser behavior, dataset revision, shot/prompt template, extraction, max_tokens/truncation, then sampling randomness. The first standard result must remain unchanged.",
         "",
