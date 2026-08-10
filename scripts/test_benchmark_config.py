@@ -27,7 +27,7 @@ class BenchmarkConfigTest(unittest.TestCase):
         self.assertEqual(config["recipe_source"], "posttrained_non_thinking_transfer")
 
     def test_posttrained_api_field_and_recipes(self) -> None:
-        model = resolve_model("Qwen/Qwen3.5-4B")
+        model = resolve_model("Qwen/Qwen3.5-2B")
         thinking = generation_config(model, "thinking")
         non_thinking = generation_config(model, "non_thinking")
         self.assertTrue(thinking["extra_body"]["chat_template_kwargs"]["enable_thinking"])
