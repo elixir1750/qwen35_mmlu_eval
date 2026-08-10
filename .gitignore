@@ -1,0 +1,22 @@
+# Local environments and caches
+.venv/
+.codex/
+.agents/
+__pycache__/
+*.py[cod]
+*.lock
+.cache/
+
+# Large model/checkpoint artifacts
+model/
+
+# Generated raw evaluation data and runtime logs
+outputs/
+logs/
+slurm-*.out
+sglang_storage/
+
+# Local/editor/system files
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,164 @@
+{
+  "benchmark": "mmlu_pro",
+  "output_dir": "outputs/full/mmlu_pro",
+  "total_samples": 12032,
+  "successful_generations": 12032,
+  "correct": 9417,
+  "accuracy": 0.782663,
+  "invalid_answers": 4,
+  "truncated_generations": 0,
+  "api_failures": 0,
+  "missing_prediction_rows": 0,
+  "elapsed_seconds_from_log": 109829.0,
+  "throughput_samples_per_second": 0.109552,
+  "input_tokens": {
+    "mean": 1421.941,
+    "median": 1352.5,
+    "p90": 1843.0,
+    "max": 2920.0
+  },
+  "output_tokens": {
+    "mean": 4636.415,
+    "median": 3981.0,
+    "p90": 8641.0,
+    "max": 28840.0
+  },
+  "total_tokens": {
+    "mean": 6058.357,
+    "median": 5395.5,
+    "p90": 10111.0,
+    "max": 30079.0
+  },
+  "reasoning_chars": {
+    "mean": 14426.202,
+    "median": 12597.5,
+    "p90": 27000.0,
+    "max": 124328.0
+  },
+  "final_chars": {
+    "mean": 1895.437,
+    "median": 1866.0,
+    "p90": 2757.0,
+    "max": 24796.0
+  },
+  "stop_reasons": {
+    "stop": 12032
+  },
+  "retry_log_occurrences": 0,
+  "subsets": {
+    "biology": {
+      "num": 717,
+      "correct": 638,
+      "accuracy": 0.889819,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "business": {
+      "num": 789,
+      "correct": 667,
+      "accuracy": 0.845374,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "chemistry": {
+      "num": 1132,
+      "correct": 1006,
+      "accuracy": 0.888693,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "computer science": {
+      "num": 410,
+      "correct": 340,
+      "accuracy": 0.829268,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "economics": {
+      "num": 844,
+      "correct": 702,
+      "accuracy": 0.831754,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "engineering": {
+      "num": 969,
+      "correct": 706,
+      "accuracy": 0.728586,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "health": {
+      "num": 818,
+      "correct": 589,
+      "accuracy": 0.720049,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "history": {
+      "num": 381,
+      "correct": 229,
+      "accuracy": 0.60105,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "law": {
+      "num": 1101,
+      "correct": 553,
+      "accuracy": 0.502271,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "math": {
+      "num": 1351,
+      "correct": 1267,
+      "accuracy": 0.937824,
+      "invalid_answers": 1,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "other": {
+      "num": 924,
+      "correct": 627,
+      "accuracy": 0.678571,
+      "invalid_answers": 2,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "philosophy": {
+      "num": 499,
+      "correct": 327,
+      "accuracy": 0.655311,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "physics": {
+      "num": 1299,
+      "correct": 1151,
+      "accuracy": 0.886066,
+      "invalid_answers": 1,
+      "truncated": 0,
+      "api_errors": 0
+    },
+    "psychology": {
+      "num": 798,
+      "correct": 615,
+      "accuracy": 0.770677,
+      "invalid_answers": 0,
+      "truncated": 0,
+      "api_errors": 0
+    }
+  },
+  "dataset_network_retry_occurrences": 0,
+  "dataset_timeout_occurrences": 0
+}

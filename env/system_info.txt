@@ -1,0 +1,63 @@
+timestamp=2026-08-07T18:07:51+08:00
+hostname=storage-hdd
+
+== python ==
+Python 3.12.8
+
+== nvidia-smi ==
+nvidia-smi: not found on this login node
+
+== nvcc ==
+nvcc: not found on this login node
+
+== cuda locations ==
+[/data1/public/cuda/cuda-11.6]
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2022 NVIDIA Corporation
+Built on Tue_Mar__8_18:18:20_PST_2022
+Cuda compilation tools, release 11.6, V11.6.124
+Build cuda_11.6.r11.6/compiler.31057947_0
+[/data1/public/cuda/cuda-11.8]
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2022 NVIDIA Corporation
+Built on Wed_Sep_21_10:33:58_PDT_2022
+Cuda compilation tools, release 11.8, V11.8.89
+Build cuda_11.8.r11.8/compiler.31833905_0
+[/data1/public/cuda/cuda-12.1]
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2023 NVIDIA Corporation
+Built on Mon_Apr__3_17:16:06_PDT_2023
+Cuda compilation tools, release 12.1, V12.1.105
+Build cuda_12.1.r12.1/compiler.32688072_0
+[/data1/public/cuda/cuda-12.2]
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2023 NVIDIA Corporation
+Built on Tue_Aug_15_22:02:13_PDT_2023
+Cuda compilation tools, release 12.2, V12.2.140
+Build cuda_12.2.r12.2/compiler.33191640_0
+[/data1/public/cuda/cuda-12.4]
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Thu_Mar_28_02:18:24_PDT_2024
+Cuda compilation tools, release 12.4, V12.4.131
+Build cuda_12.4.r12.4/compiler.34097967_0
+[/data1/public/cuda/cuda-12.8]
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2025 NVIDIA Corporation
+Built on Wed_Jan_15_19:20:09_PST_2025
+Cuda compilation tools, release 12.8, V12.8.61
+Build cuda_12.8.r12.8/compiler.35404655_0
+
+== memory ==
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi        48Gi        10Gi       182Mi        66Gi        75Gi
+Swap:             0B          0B          0B
+
+== disk ==
+Filesystem                               Size  Used Avail Use% Mounted on
+inode102:/home/lhzhang/qwen35_mmlu_eval   84T   70T   14T  84% /home/lhzhang/qwen35_mmlu_eval
+
+== devices ==
+no /dev/nvidia* on this login node
+
+== slurm gpu partitions ==

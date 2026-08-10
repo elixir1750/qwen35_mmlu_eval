@@ -1,0 +1,27 @@
+python:
+Python 3.12.8
+torch:
+2.9.1+cu128
+torch.version.cuda=12.8
+cuda_available_on_login=False
+sglang:
+0.5.10
+/home/lhzhang/qwen35_mmlu_eval/.venv/lib/python3.12/site-packages/sglang/__init__.py
+evalscope:
+1.10.0
+/home/lhzhang/qwen35_mmlu_eval/.venv/lib/python3.12/site-packages/evalscope/__init__.py
+uv pip show sglang:
+Name: sglang
+Version: 0.5.10
+Location: /home/lhzhang/qwen35_mmlu_eval/.venv/lib/python3.12/site-packages
+Requires: aiohttp, anthropic, apache-tvm-ffi, blobfile, build, compressed-tensors, cuda-python, datasets, einops, fastapi, flash-attn-4, flashinfer-cubin, flashinfer-python, gguf, interegular, ipython, llguidance, mistral-common, modelscope, msgspec, ninja, numpy, nvidia-cutlass-dsl, nvidia-ml-py, openai, openai-harmony, orjson, outlines, packaging, partial-json-parser, pillow, prometheus-client, psutil, py-spy, pybase64, pydantic, python-multipart, pyzmq, quack-kernels, requests, scipy, sentencepiece, setproctitle, sglang-kernel, smg-grpc-servicer, soundfile, tiktoken, timm, torch, torch-memory-saver, torchao, torchaudio, torchcodec, torchvision, tqdm, transformers, uvicorn, uvloop, watchfiles, xgrammar
+Required-by:
+uv pip show evalscope:
+Name: evalscope
+Version: 1.10.0
+Location: /home/lhzhang/qwen35_mmlu_eval/.venv/lib/python3.12/site-packages
+Requires: aiohttp, colorlog, docstring-parser, dotenv, editdistance, jieba, jinja2, jsonlines, jsonschema, latex2sympy2-extended, litellm, markdown, modelscope, more-itertools, nltk, openai, overrides, pandas, pillow, plotly, pydantic, pylatexenc, pyyaml, requests, rich, rouge-chinese, rouge-score, sacrebleu, sympy, tabulate, tqdm, transformers, word2number, zhconv
+Required-by:
+official main attempted:
+commit=5e60363960db96d56b519617d7a75be871f15a0e
+result=not runnable on driver 570.153.02 (torch 2.13.0+cu130 requires CUDA 13 driver)

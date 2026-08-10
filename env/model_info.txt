@@ -1,0 +1,39 @@
+model_repo=Qwen/Qwen3.5-4B
+model_role=post-trained multimodal causal language model (not Base)
+download_endpoint=https://hf-mirror.com
+download_tool=hf download Qwen/Qwen3.5-4B --local-dir model/Qwen3.5-4B
+hf_revision=851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+hf_revision_source=model/Qwen3.5-4B/.cache/huggingface/trees/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a.json
+model_config_architecture=Qwen3_5ForConditionalGeneration
+model_config_model_type=qwen3_5
+model_text_dtype=bfloat16
+model_text_max_position_embeddings=262144
+model_text_num_hidden_layers=32
+model_index_total_size_bytes=9319737856
+model_directory_size_bytes=9342911352
+model_format=original Hugging Face safetensors
+quantization=none (no GGUF/AWQ/GPTQ/MLX/conversion)
+
+files:
+.gitattributes 1570 bytes
+LICENSE 11544 bytes
+README.md 77661 bytes
+chat_template.jinja 7756 bytes
+config.json 3161 bytes
+merges.txt 3353259 bytes
+model.safetensors.index.json 76196 bytes
+model.safetensors-00001-of-00002.safetensors 5329398688 bytes sha256=26a93f066e1916adb13453dae5a0c707c0fbc71299ed98779571a907b8e74c61
+model.safetensors-00002-of-00002.safetensors 3990429408 bytes sha256=cb544bd9bfae93dc59b0f22b292f5933573854a7f9b97835c67060d7d910e188
+preprocessor_config.json 390 bytes
+tokenizer.json 12807982 bytes
+tokenizer_config.json 16710 bytes
+video_preprocessor_config.json 385 bytes
+vocab.json 6722759 bytes
+
+validation:
+required_config=present
+required_tokenizer_files=present
+chat_template=present
+model_safetensors_index=present
+safetensors_shards=2/2 present
+incomplete_files=none

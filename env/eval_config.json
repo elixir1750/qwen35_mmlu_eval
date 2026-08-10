@@ -1,0 +1,129 @@
+{
+  "created_at": "2026-08-07T19:13:00+08:00",
+  "project_dir": "/home/lhzhang/qwen35_mmlu_eval",
+  "model": {
+    "repo": "Qwen/Qwen3.5-4B",
+    "local_path": "/home/lhzhang/qwen35_mmlu_eval/model/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "format": "original Hugging Face safetensors",
+    "post_trained": true,
+    "quantization": null
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 1,
+    "vram_gib": 24,
+    "driver": "570.153.02",
+    "cuda": "12.8",
+    "tp_size": 1
+  },
+  "software": {
+    "python": "3.12.8",
+    "torch": "2.9.1+cu128",
+    "sglang": "0.5.10",
+    "evalscope": "1.10.0",
+    "openai": "2.6.1",
+    "huggingface_hub": "1.26.1",
+    "sglang_main_attempted_commit": "5e60363960db96d56b519617d7a75be871f15a0e",
+    "sglang_main_status": "not runnable with driver 570.153.02; torch 2.13.0+cu130 required a newer driver"
+  },
+  "sglang": {
+    "launch_script": "scripts/launch_sglang.sh",
+    "launch_command_template": "bash scripts/launch_sglang.sh",
+    "model_name": "Qwen/Qwen3.5-4B",
+    "tp_size": 1,
+    "mem_fraction_static": 0.75,
+    "context_length": 65536,
+    "reasoning_parser": "qwen3",
+    "random_seed": 42,
+    "quantization": null,
+    "speculative_decoding": false,
+    "mtp": false,
+    "cuda_home": "/data1/public/cuda/cuda-12.8",
+    "attention_backend_observed": "flashinfer",
+    "server_log_smoke": "logs/sglang.log",
+    "server_log_full": {
+      "mmlu_pro": "logs/sglang-full-mmlu_pro.log",
+      "mmlu_redux": "logs/sglang-full-mmlu_redux.log"
+    }
+  },
+  "generation": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0,
+    "max_tokens": 32768,
+    "seed": 42,
+    "stream": false,
+    "timeout_seconds": 600,
+    "retries": 3,
+    "retry_interval_seconds": 2
+  },
+  "benchmarks": {
+    "mmlu_pro": {
+      "dataset_id": "TIGER-Lab/MMLU-Pro",
+      "dataset_hub": "modelscope",
+      "split": "test",
+      "few_shot": 5,
+      "train_split_for_few_shot": "validation",
+      "prompt_type": "CoT; built-in EvalScope MMLU-Pro adapter",
+      "answer_options": "A-J",
+      "answer_extraction": "built-in EvalScope answer parser from final ANSWER: [LETTER]",
+      "standard_total_samples": 12032,
+      "smoke_total_samples": 42,
+      "smoke_limit_per_subset": 3,
+      "smoke_output": "outputs/smoke/mmlu_pro",
+      "full_output": "outputs/full/mmlu_pro",
+      "full_job_id": 94213,
+      "full_port": 8000,
+      "full_eval_batch_size": 8,
+      "postprocess_job_id": 94214
+    },
+    "mmlu_redux": {
+      "dataset_id": "AI-ModelScope/mmlu-redux-2.0",
+      "dataset_hub": "modelscope",
+      "split": "test",
+      "few_shot": 0,
+      "train_split_for_few_shot": null,
+      "prompt_type": "CoT; built-in EvalScope MMLU-Redux adapter",
+      "answer_options": "A-D",
+      "answer_extraction": "built-in EvalScope answer parser from final ANSWER: [LETTER]",
+      "standard_total_samples": 5700,
+      "smoke_total_samples": 40,
+      "smoke_subset_override": ["abstract_algebra"],
+      "smoke_limit_per_subset": 40,
+      "smoke_output": "outputs/smoke/mmlu_redux",
+      "full_output": "outputs/full/mmlu_redux",
+      "full_job_id": 94212,
+      "full_port": 8001,
+      "full_eval_batch_size": 8,
+      "postprocess_job_id": 94214
+    }
+  },
+  "commands": {
+    "system_info": "bash scripts/collect_system_info.sh",
+    "model_download": "env -u http_proxy -u https_proxy -u all_proxy -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY HF_ENDPOINT=https://hf-mirror.com HF_HUB_DISABLE_XET=1 .venv/bin/hf download Qwen/Qwen3.5-4B --local-dir model/Qwen3.5-4B",
+    "smoke": "bash scripts/run_smoke.sh",
+    "full_mmlu_pro": "PORT=8000 EVAL_BATCH_SIZE=8 bash scripts/run_full_eval.sh mmlu_pro",
+    "full_mmlu_redux": "PORT=8001 EVAL_BATCH_SIZE=8 bash scripts/run_full_eval.sh mmlu_redux",
+    "summarize_full_mmlu_pro": ".venv/bin/python scripts/summarize_eval.py mmlu_pro --output-dir outputs/full/mmlu_pro --eval-log logs/evalscope-mmlu_pro-full.log --out env/mmlu_pro_full_summary.json",
+    "summarize_full_mmlu_redux": ".venv/bin/python scripts/summarize_eval.py mmlu_redux --output-dir outputs/full/mmlu_redux --eval-log logs/evalscope-mmlu_redux-full.log --out env/mmlu_redux_full_summary.json",
+    "finalize_report": ".venv/bin/python scripts/finalize_report.py --pro-summary env/mmlu_pro_full_summary.json --redux-summary env/mmlu_redux_full_summary.json"
+  },
+  "smoke_diagnostics": {
+    "api_finish_reason": "stop",
+    "api_reasoning_present": true,
+    "api_final_content_present": true,
+    "mmlu_pro_accuracy": 0.7857142857142857,
+    "mmlu_redux_smoke_accuracy": 0.925,
+    "mmlu_pro_invalid_answers": 0,
+    "mmlu_redux_invalid_answers": 0,
+    "mmlu_pro_truncated": 0,
+    "mmlu_redux_truncated": 0,
+    "mmlu_pro_api_errors": 0,
+    "mmlu_redux_api_errors": 0,
+    "mmlu_pro_stale_prediction_rows_outside_final_review": 2
+  },
+  "reproduction_label": "Qwen3.5-4B + SGLang + EvalScope standard-recipe reproduction; not claimed as official exact recipe"
+}
