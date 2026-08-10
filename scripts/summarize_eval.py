@@ -29,13 +29,15 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 def quantiles(values: list[float]) -> dict[str, float | None]:
     if not values:
-        return {key: None for key in ("mean", "median", "p90", "max")}
+        return {key: None for key in ("mean", "median", "p90", "p95", "max")}
     ordered = sorted(values)
     p90_index = min(len(ordered) - 1, math.ceil(0.90 * len(ordered)) - 1)
+    p95_index = min(len(ordered) - 1, math.ceil(0.95 * len(ordered)) - 1)
     return {
         "mean": round(statistics.mean(values), 3),
         "median": round(statistics.median(values), 3),
         "p90": round(ordered[p90_index], 3),
+        "p95": round(ordered[p95_index], 3),
         "max": round(max(values), 3),
     }
 
@@ -123,6 +125,7 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--eval-log", type=Path)
     parser.add_argument("--run-manifest", type=Path)
+    parser.add_argument("--expected-total", type=int)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
@@ -223,6 +226,13 @@ def main() -> None:
         "truncated_generations": sum(row["truncated"] for row in records),
         "api_failures": sum(row["api_error"] for row in records),
         "missing_prediction_rows": sum(row["missing_prediction"] for row in records),
+        "expected_total": args.expected_total,
+        "missing_review_rows": (
+            max(args.expected_total - len(records), 0) if args.expected_total is not None else None
+        ),
+        "sample_count_matches_expected": (
+            len(records) == args.expected_total if args.expected_total is not None else None
+        ),
         "duplicate_prediction_rows": duplicate_prediction_rows,
         "duplicate_review_rows": duplicate_review_rows,
         "elapsed_seconds": elapsed,

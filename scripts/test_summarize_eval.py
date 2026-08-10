@@ -57,7 +57,8 @@ class SummarizeFixtureTest(unittest.TestCase):
             output = root / "summary.json"
             subprocess.run([
                 sys.executable, str(ROOT / "scripts/summarize_eval.py"), "mmlu_pro",
-                "--output-dir", str(root), "--run-manifest", str(manifest), "--out", str(output),
+                "--output-dir", str(root), "--run-manifest", str(manifest),
+                "--expected-total", "7", "--out", str(output),
             ], check=True)
             summary = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(summary["total_samples"], 6)
@@ -67,6 +68,9 @@ class SummarizeFixtureTest(unittest.TestCase):
             self.assertEqual(summary["api_failures"], 2)  # missing + explicit API error
             self.assertEqual(summary["truncated_generations"], 1)
             self.assertEqual(summary["invalid_answers"], 1)
+            self.assertEqual(summary["missing_review_rows"], 1)
+            self.assertFalse(summary["sample_count_matches_expected"])
+            self.assertEqual(summary["output_tokens"]["p95"], 4.0)
             self.assertIsNone(summary["throughput_samples_per_second"])
             self.assertEqual(summary["elapsed_source"], "monotonic_manifest")
 

@@ -56,6 +56,7 @@ model_tag="$(printf '%s' "$resolve_json" | "$PYTHON" -c 'import json,sys; print(
 checkpoint_type="$(printf '%s' "$resolve_json" | "$PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["model"]["checkpoint_type"])')"
 size="$(printf '%s' "$resolve_json" | "$PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["model"]["size"])')"
 default_path="$(printf '%s' "$resolve_json" | "$PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["model"]["local_path"])')"
+expected_total="$(printf '%s' "$resolve_json" | "$PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["benchmark"]["expected_total"])')"
 
 declare -a SETTINGS=()
 if [[ "$checkpoint_type" == "base" ]]; then
@@ -269,7 +270,14 @@ PY
   fi
   echo "evalscope_command=evalscope eval ${eval_args[*]}" | tee "$eval_log"
   "$PROJECT_DIR/.venv/bin/evalscope" eval "${eval_args[@]}" 2>&1 | tee -a "$eval_log"
-  "$PYTHON" scripts/summarize_eval.py "$BENCHMARK" --output-dir "$run_dir" --eval-log "$eval_log" --run-manifest "$manifest" --out "$run_dir/summary.json"
+  summary_args=(
+    "$BENCHMARK" --output-dir "$run_dir" --eval-log "$eval_log"
+    --run-manifest "$manifest" --out "$run_dir/summary.json"
+  )
+  if [[ "$RUN_MODE" == "full" ]]; then
+    summary_args+=(--expected-total "$expected_total")
+  fi
+  "$PYTHON" scripts/summarize_eval.py "${summary_args[@]}"
   cleanup
   "$PYTHON" scripts/write_manifest.py finish --manifest "$manifest" --exit-code 0 >/dev/null
   trap - EXIT INT TERM

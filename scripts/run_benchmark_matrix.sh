@@ -10,6 +10,7 @@ SUBMIT_SLURM="${SUBMIT_SLURM:-1}"
 SKIP_COMPLETED="${SKIP_COMPLETED:-1}"
 RESUME="${RESUME:-0}"
 RUN_MODE="${RUN_MODE:-full}"
+MAX_TOKENS="${MAX_TOKENS:-}"
 MODEL_FILTER=""
 BENCHMARK_FILTER=""
 while [[ $# -gt 0 ]]; do
@@ -88,7 +89,9 @@ for model in "${models[@]}"; do
     tag="$("$PROJECT_DIR/.venv/bin/python" scripts/benchmark_config.py resolve "$model" --benchmark "$benchmark" | "$PROJECT_DIR/.venv/bin/python" -c 'import json,sys; print(json.load(sys.stdin)["model"]["model_tag"])')"
     size="$("$PROJECT_DIR/.venv/bin/python" scripts/benchmark_config.py resolve "$model" --benchmark "$benchmark" | "$PROJECT_DIR/.venv/bin/python" -c 'import json,sys; print(json.load(sys.stdin)["model"]["size"])')"
     run_id="matrix_${tag}_${benchmark}"
-    command="RUN_MODE=$RUN_MODE SKIP_COMPLETED=$SKIP_COMPLETED RESUME=$RESUME RUN_ID=$run_id bash scripts/run_benchmark.sh $model $benchmark"
+    command="RUN_MODE=$RUN_MODE SKIP_COMPLETED=$SKIP_COMPLETED RESUME=$RESUME RUN_ID=$run_id"
+    [[ -n "$MAX_TOKENS" ]] && command+=" MAX_TOKENS=$MAX_TOKENS"
+    command+=" bash scripts/run_benchmark.sh $model $benchmark"
     echo "$command"
     if [[ "$DRY_RUN" == "1" ]]; then
       continue
