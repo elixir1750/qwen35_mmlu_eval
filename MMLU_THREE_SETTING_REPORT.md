@@ -1,6 +1,6 @@
 # Qwen3.5 三种设定 MMLU 评测报告
 
-> 生成日期：2026-08-10；代码提交：`24465e056abb1172311d657f6dca6b15d782e4bf`
+> 生成日期：2026-08-10；代码提交：`690dc68ff1c1f7263d739462b6cefbc4bad4d6f3`
 
 ## Technical summary
 
@@ -71,7 +71,23 @@ Smoke 结果只用于验证数据加载、API、模式字段、parser 和答案�
 
 | Model | Size | Setting | Benchmark | Samples | Accuracy | Invalid | Truncated | API failures | Slurm job | Run |
 |---|---|---|---|---:|---:|---:|---:|---:|---|---|
+| Qwen/Qwen3.5-0.8B | 0.8B | thinking | mmlu_pro | 42 | 45.2381 | 0 | 0 | 0 | 94609 | outputs/smoke/qwen35_0_8b_posttrained/thinking/mmlu_pro/smoke_0p8b_thinking_80k_131k_pro |
+| Qwen/Qwen3.5-0.8B | 0.8B | non_thinking | mmlu_pro | 420 | 34.7619 | 9 | 9 | 0 | 94561 | outputs/smoke/qwen35_0_8b_posttrained/non_thinking/mmlu_pro/smoke_0p8b_pro_retry_non_thinking |
+| Qwen/Qwen3.5-0.8B | 0.8B | non_thinking | mmlu_redux | 30 | 36.6667 | 2 | 2 | 0 | 94619 | outputs/smoke/qwen35_0_8b_posttrained/non_thinking/mmlu_redux/smoke_0p8b_non_thinking_redux |
+| Qwen/Qwen3.5-0.8B-Base | 0.8B | base | mmlu_pro | 42 | 35.7143 | 0 | 0 | 0 | 94619 | outputs/smoke/qwen35_0_8b_base/base/mmlu_pro/smoke_0p8b_base_pro |
+| Qwen/Qwen3.5-0.8B-Base | 0.8B | base | mmlu_redux | 30 | 46.6667 | 2 | 0 | 0 | 94619 | outputs/smoke/qwen35_0_8b_base/base/mmlu_redux/smoke_0p8b_base_redux |
+| Qwen/Qwen3.5-2B | 2B | thinking | mmlu_pro | 42 | 57.1429 | 0 | 0 | 0 | 94690 | outputs/smoke/qwen35_2b_posttrained/thinking/mmlu_pro/smoke_2b_matrix_pro_r1_thinking |
+| Qwen/Qwen3.5-2B | 2B | thinking | mmlu_redux | 3 | 66.6667 | 0 | 0 | 0 | 94691 | outputs/smoke/qwen35_2b_posttrained/thinking/mmlu_redux/smoke_2b_matrix_redux_r1_thinking |
+| Qwen/Qwen3.5-2B | 2B | non_thinking | mmlu_pro | 42 | 47.619 | 0 | 0 | 0 | 94690 | outputs/smoke/qwen35_2b_posttrained/non_thinking/mmlu_pro/smoke_2b_matrix_pro_r1_non_thinking |
+| Qwen/Qwen3.5-2B | 2B | non_thinking | mmlu_redux | 3 | 33.3333 | 0 | 0 | 0 | 94691 | outputs/smoke/qwen35_2b_posttrained/non_thinking/mmlu_redux/smoke_2b_matrix_redux_r1_non_thinking |
+| Qwen/Qwen3.5-2B-Base | 2B | base | mmlu_pro | 42 | 47.619 | 3 | 1 | 0 | 94699 | outputs/smoke/qwen35_2b_base/base/mmlu_pro/smoke_2b_base_pro_r1 |
+| Qwen/Qwen3.5-2B-Base | 2B | base | mmlu_redux | 3 | 33.3333 | 0 | 0 | 0 | 94700 | outputs/smoke/qwen35_2b_base/base/mmlu_redux/smoke_2b_base_redux_r1 |
 | Qwen/Qwen3.5-4B | 4B | thinking | mmlu_pro | 42 | 80.9524 | 0 | 0 | 0 | 94486 | outputs/smoke/qwen35_4b_posttrained/thinking/mmlu_pro/smoke_validation_4b_thinking2 |
+| Qwen/Qwen3.5-4B | 4B | thinking | mmlu_redux | 3 | 66.6667 | 0 | 0 | 0 | 94693 | outputs/smoke/qwen35_4b_posttrained/thinking/mmlu_redux/smoke_4b_matrix_redux_r1_thinking |
+| Qwen/Qwen3.5-4B | 4B | non_thinking | mmlu_pro | 42 | 76.1905 | 0 | 0 | 0 | 94707 | outputs/smoke/qwen35_4b_posttrained/non_thinking/mmlu_pro/smoke_4b_matrix_pro_non_thinking_r2 |
+| Qwen/Qwen3.5-4B | 4B | non_thinking | mmlu_redux | 3 | 33.3333 | 0 | 0 | 0 | 94693 | outputs/smoke/qwen35_4b_posttrained/non_thinking/mmlu_redux/smoke_4b_matrix_redux_r1_non_thinking |
+| Qwen/Qwen3.5-4B-Base | 4B | base | mmlu_pro | 42 | 73.8095 | 0 | 0 | 0 | 94701 | outputs/smoke/qwen35_4b_base/base/mmlu_pro/smoke_4b_base_pro_r1 |
+| Qwen/Qwen3.5-4B-Base | 4B | base | mmlu_redux | 3 | 66.6667 | 0 | 0 | 0 | 94702 | outputs/smoke/qwen35_4b_base/base/mmlu_redux/smoke_4b_base_redux_r1 |
 
 ## Reliability diagnostics
 
