@@ -1,6 +1,6 @@
 # Qwen3.5 三种设定 MMLU 评测报告
 
-> 生成日期：2026-08-10；代码提交：`690dc68ff1c1f7263d739462b6cefbc4bad4d6f3`
+> 生成日期：2026-08-13；代码提交：`24c0917e791d148f1c33347b888b662085cdb659`
 
 ## Technical summary
 
@@ -18,15 +18,15 @@ Post-trained 行使用官方 model card 公开的对应分数作为参考；Base
 | Size | Setting | Benchmark | Official | Local | Delta | Correct/Total | Invalid | Truncated | API failures | Avg output tokens | Avg reasoning chars | Elapsed(s) | Revision | Provenance | Status |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|---|
 | 0.8B | thinking | mmlu_pro | 42.3 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | pending |
-| 0.8B | thinking | mmlu_redux | 59.5 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | pending |
-| 0.8B | non_thinking | mmlu_pro | 29.7 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | pending |
-| 0.8B | non_thinking | mmlu_redux | 48.5 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | pending |
-| 0.8B | base | mmlu_pro | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68 | protocol_transfer | pending |
-| 0.8B | base | mmlu_redux | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68 | protocol_transfer | pending |
+| 0.8B | thinking | mmlu_redux | 59.5 | 63.2281 | 3.7281 | 3604/5700 | 92 | 21 | 0 | 6332.332 | 20830.828 | 24156.378748451 | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | completed |
+| 0.8B | non_thinking | mmlu_pro | 29.7 | 35.6715 | 5.9715 | 4292/12032 | 317 | 330 | 0 | 3093.93 | 0.0 | 25963.489358662 | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | completed |
+| 0.8B | non_thinking | mmlu_redux | 48.5 | 58.1754 | 9.6754 | 3316/5700 | 82 | 49 | 0 | 1542.393 | 0.0 | 6185.403047925 | 2fc06364715b967f1860aea9cf38778875588b17 | official_reproduction | completed |
+| 0.8B | base | mmlu_pro | n/a | 33.7101 | n/a | 4056/12032 | 1156 | 1694 | 0 | 5436.763 | 2.433 | 50626.455621021 | dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68 | protocol_transfer | completed |
+| 0.8B | base | mmlu_redux | n/a | 58.2281 | n/a | 3319/5700 | 181 | 134 | 0 | 1279.612 | 0.0 | 5782.686381243 | dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68 | protocol_transfer | completed |
 | 2B | thinking | mmlu_pro | 66.5 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 15852e8c16360a2fea060d615a32b45270f8a8fc | official_reproduction | pending |
-| 2B | thinking | mmlu_redux | 79.6 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 15852e8c16360a2fea060d615a32b45270f8a8fc | official_reproduction | pending |
+| 2B | thinking | mmlu_redux | 79.6 | 79.8596 | 0.2596 | 4552/5700 | 5 | 4 | 0 | 4884.649 | 17374.76 | 28456.718226593 | 15852e8c16360a2fea060d615a32b45270f8a8fc | official_reproduction | completed |
 | 2B | non_thinking | mmlu_pro | 55.3 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 15852e8c16360a2fea060d615a32b45270f8a8fc | official_reproduction | pending |
-| 2B | non_thinking | mmlu_redux | 69.2 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 15852e8c16360a2fea060d615a32b45270f8a8fc | official_reproduction | pending |
+| 2B | non_thinking | mmlu_redux | 69.2 | 75.1228 | 5.9228 | 4282/5700 | 30 | 9 | 0 | 1039.651 | 0.0 | 6544.652602436 | 15852e8c16360a2fea060d615a32b45270f8a8fc | official_reproduction | completed |
 | 2B | base | mmlu_pro | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | b1485b2fa6dfa1287294f269f5fb618e03d52d7c | protocol_transfer | pending |
 | 2B | base | mmlu_redux | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | b1485b2fa6dfa1287294f269f5fb618e03d52d7c | protocol_transfer | pending |
 | 4B | thinking | mmlu_pro | 79.1 | 78.2663 | -0.8337 | 9417/12032 | 4 | 0 | 0 | n/a | n/a | n/a | 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a | historical_reused | completed_historical |
@@ -39,8 +39,8 @@ Post-trained 行使用官方 model card 公开的对应分数作为参考；Base
 | 9B | thinking | mmlu_redux | 91.1 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | c202236235762e1c871ad0ccb60c8ee5ba337b9a | official_reproduction | pending |
 | 9B | non_thinking | mmlu_pro | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | c202236235762e1c871ad0ccb60c8ee5ba337b9a | official_reproduction | pending |
 | 9B | non_thinking | mmlu_redux | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | c202236235762e1c871ad0ccb60c8ee5ba337b9a | official_reproduction | pending |
-| 9B | base | mmlu_pro | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 68c46c4b3498877f3ef123c856ecfde50c39f404 | protocol_transfer | pending |
-| 9B | base | mmlu_redux | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 68c46c4b3498877f3ef123c856ecfde50c39f404 | protocol_transfer | pending |
+| 9B | base | mmlu_pro | n/a | 81.2168 | n/a | 9772/12032 | 30 | 52 | 0 | 2696.413 | 0.0 | 55000.268637716 | 68c46c4b3498877f3ef123c856ecfde50c39f404 | protocol_transfer | completed |
+| 9B | base | mmlu_redux | n/a | 90.9298 | n/a | 5183/5700 | 1 | 0 | 0 | 1007.149 | 0.0 | 9203.006024143 | 68c46c4b3498877f3ef123c856ecfde50c39f404 | protocol_transfer | completed |
 
 ## Protocol and data provenance
 
@@ -56,10 +56,10 @@ Post-trained 行使用官方 model card 公开的对应分数作为参考；Base
 
 | Size | Benchmark | Thinking - Base | Non-Thinking - Base | Thinking - Non-Thinking |
 |---|---|---:|---:|---:|
-| 0.8B | mmlu_pro | n/a | n/a | n/a |
-| 0.8B | mmlu_redux | n/a | n/a | n/a |
+| 0.8B | mmlu_pro | n/a | 1.9614 | n/a |
+| 0.8B | mmlu_redux | 5.0000 | -0.0527 | 5.0527 |
 | 2B | mmlu_pro | n/a | n/a | n/a |
-| 2B | mmlu_redux | n/a | n/a | n/a |
+| 2B | mmlu_redux | n/a | n/a | 4.7368 |
 | 4B | mmlu_pro | n/a | n/a | n/a |
 | 4B | mmlu_redux | n/a | n/a | n/a |
 | 9B | mmlu_pro | n/a | n/a | n/a |

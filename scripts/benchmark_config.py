@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -94,7 +95,7 @@ def generation_config(model: dict[str, Any], setting: str) -> dict[str, Any]:
 
     result = dict(source)
     result["recipe_source"] = recipe_source
-    result["timeout"] = 600
+    result["timeout"] = int(os.environ.get("EVAL_TIMEOUT", "600"))
     result["checkpoint_type"] = model["checkpoint_type"]
     if model["checkpoint_type"] == "posttrained":
         result["extra_body"] = {"chat_template_kwargs": {"enable_thinking": setting == "thinking"}}
